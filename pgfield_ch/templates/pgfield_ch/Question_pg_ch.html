@@ -1,0 +1,37 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    理解测试
+{% endblock %}
+
+{% block content %}
+    <p>
+        假设第一阶段中：<br>
+        参与者1贡献了10个筹码给公共账户，<br>
+        参与者2贡献了8个筹码，<br>
+        参与者3贡献了6个筹码，<br>
+        参与者4贡献了一个筹码。<br>
+        <br>
+        然后，在第二阶段
+        参与者3使用了一个反对筹码，<br>
+        另外，他/她收到了一个来自其他参与者的反对筹码。<br>
+        <br>
+    </p>
+    <p>
+        在第二阶段<b>开始之前</b>参与者3拥有多少筹码？<br>
+    </p>
+
+    {% formfield player.question_pg1 with label="他/她的收益是" %}
+
+    <p>
+        在第二阶段<b>结束之后</b>参与者3拥有多少筹码？<br>
+    </p>
+
+    {% formfield player.question_pg2 with label="他/她的收益是" %}
+
+    {% next_button %}
+
+    {% include 'pgfield_ch/Instructions_ch.html' %}
+
+{% endblock %}

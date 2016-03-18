@@ -1,0 +1,37 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Results<br>
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+<table class="table-condensed" style="width:600px; margin-top:20px;">
+    <tr><td>You started with an endowment of:<td align="center">{{ Constants.endowment }}</tr>
+    <tr><td>You contributed to the public fund:<td align="center">{{ player.contribution }}</tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr><td>Your group contributed:<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>Resulting in an individual share of:<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>Your payoff before the allocation of disapproval points:<td align="center"><b>{{ player.payoff_s1 }}</tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr><td>Deduction by received punishment points:<td align="center" style="color:#ff0000">
+        {% if player.id_in_group == 1 %}   {{ eff_punish_p1 }}
+        {% elif player.id_in_group == 2 %} {{ eff_punish_p2 }}
+        {% elif player.id_in_group == 3 %} {{ eff_punish_p3 }}
+        {% elif player.id_in_group == 4 %} {{ eff_punish_p4 }}
+        {% endif %}
+    </tr>
+    <tr><td>Expenditure punishing others:<td align="center" style="color:#ff0000">{{ player.punish_exp}}</tr>
+    <tr><td>Your payoff after the allocation of disapproval points::<td align="center"><b>{{ player.prepayoff }}</tr>
+    <tr><td></tr>
+</table>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+
+
+

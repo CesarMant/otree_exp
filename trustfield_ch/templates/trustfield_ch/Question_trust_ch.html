@@ -1,0 +1,23 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    理解测试
+{% endblock %}
+
+{% block content %}
+    <p>
+        假设参与者A分配给参与者B 30个筹码。<br>
+        参与者B收到翻了3倍的筹码后，选择返还参与者A 50个筹码。<br>
+        最后，参与者A和参与者B各有几个筹码？<br>
+    </p>
+
+    {% formfield player.question_trustA with label="参与者A获得了" %}
+
+    {% formfield player.question_trustB with label="参与者B获得了" %}
+
+    {% next_button %}
+
+    {% include 'trustfield_ch/Instructions_ch.html' %}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+#####################################################################
+##### List of errors in the experiment that need to be debugged #####
+#####################################################################
+
+# General overview of the experiment
+The full experiment consists of two blocks.
+Block 1: Trust game. 5 rounds. 
+Matching depends on information revealed at the beginning of the session. Rematching after each round.
+Block 2: Public goods game with punishment. 5 rounds. 
+Matching depends on information revealed at the beginning of the session.
+Payment at the end of the activity is the sum of one randomly chosen round from Block 1 and the cumulative payoff in Block 2.
+
+The experiment will be conducted in rural China. The experiment will be conducted in Chinese.
+
+### List of errors
+
+# 4
+App: trustfield_ch / pgfield_ch / pgfield_only_ch
+The decisions in the trust game and the public goods game are elicited using a dropdown menu.
+When the LANGUAGUE_CODE is set to 'zh-cn' to conduct the experiment in Chinese, the numbers do not appear in the dropdown menu.
+In all the menu options only appears the word "points".
+
+# 5
+App: trustfield_ch / pgfield_ch / pgfield_only_ch
+In the welcome page the ethnicity and religious affiliation of subjects is requested.
+To do so I use a predefined list of choices. 
+In the current program, the value stored uses unicode characters. 
+The problem is that the data cannot be exported at the end of the session.
+Alternatively, I tried to define a choice list as tuples ('stored value', 'human readable label')
+The problem with this approach is that I cannot use the command "self.get_year_in_school_display()" 
+to access the human readable label.
+The reason is that I store this information in the dictionary self.participant.vars['variablename']
+And then to use it again I use "self.get_others_in_group()[0].participant.vars['variablename']"
+So for this method is not possible to use get_FOO_display()
+
+Files to check:
+trustfield/models.py lines 63-75
+
+# 6
+App: match_trustgame
+So far the errors come from the game version with the minimum number of players.
+I created another app to deal with the programming of the matching protocol for the trust game.
+I need five different matching protocols for the trust game. Each one will be applied in a round:
+1. Random matching
+2. Matching with someone of the same ethnicity
+3. Matching with someone of the same religion
+4. Matching with someone of the opposite ethnicity (if there are available subjects)
+5. Matching with someone of the opposite religion (if there are available subjects)
+The main problem is that in the trust game I need that roles remain fixed.
+A sender (id in group 1) in the first round will be always a sender.
+A receiver (id in group 2) in the first round will be always a receiver.
+
+Files to check:
+match_trustgame/views.py lines 28-85
+

@@ -1,0 +1,34 @@
+{% extends "pgfield_ch/Punishment_ch.html" %}
+{% load staticfiles otree_tags %}
+{% block myform %}
+<tr>
+    <td align="right">
+        {% with player.get_others_in_group.0 as p %}
+            Player {{ p.id_in_group }} ({{ p.get_ethnicity }} ethnicity):<td align="center">{{ p.contribution }}
+        {% endwith %}
+    </td>
+    <td>
+        {% formfield player.punish_p1 with label="" %}
+    </td>
+</tr>
+<tr>
+    <td align="right">
+        {% with player.get_others_in_group.1 as p %}
+            Player {{ p.id_in_group }} ({{ p.get_ethnicity }} ethnicity):<td align="center">{{ p.contribution }}
+        {% endwith %}
+    </td>
+    <td>
+        {% formfield player.punish_p2 with label="" %}
+    </td>
+</tr>
+<tr>
+    <td align="right">
+        {% with player.get_others_in_group.2 as p %}
+            Player {{ p.id_in_group }} ({{ p.get_ethnicity }} ethnicity):<td align="center">{{ p.contribution }}
+        {% endwith %}
+    </td>
+    <td>
+        {% formfield player.punish_p4 with label="" %}
+    </td>
+</tr>
+{% endblock %}

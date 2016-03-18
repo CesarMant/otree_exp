@@ -1,0 +1,30 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Final Results: Public Goods Game
+{% endblock %}
+
+{% block content %}
+
+<h4>Your history of the game</h4>
+<table class="table">
+    <table class="table">
+        <tr>
+            <th style="text-align:center">Round</th>
+            <th>Points</th>
+        </tr>
+        {% for p in player.in_all_rounds %}
+            <tr>
+                <td align="center">{{ p.subsession.round_number }}</td>
+                <td>You earned {{ p.prepayoff }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</table>
+
+<br>
+Adding the earnings from the {{ Constants.num_rounds }} rounds you earned in total <b>{{ payoff_block2 }}</b>.<br>
+<br>
+    {% next_button %}
+
+{% endblock %}

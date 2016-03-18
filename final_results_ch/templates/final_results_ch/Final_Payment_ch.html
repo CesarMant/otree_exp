@@ -1,0 +1,19 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    最终结果
+{% endblock %}
+
+{% block content %}
+<p>
+    感谢您的参与。请您稍作等待，在我们的工作人员叫到您的编号后，可以来领取您的报酬。<br>
+    <br>
+    在本实验的第一部分，您得到的报酬是{{ player.payoff_block1 }}。<br>
+    在第二部分，您得到的报酬是{{ player.payoff_block2 }}。<br>
+    <br>
+    所以您总共得到的报酬是 <b>{{ player.payoff }}</b>。<br>
+    <br>
+</p>
+    {% next_button %}
+
+{% endblock %}

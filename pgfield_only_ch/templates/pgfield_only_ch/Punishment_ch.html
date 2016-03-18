@@ -1,0 +1,42 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    第二阶段：分配反对筹码<br>
+    轮次：{{ subsession.round_number }} / {{ Constants.num_rounds }} <br>
+{% endblock %}
+
+{% block content %}
+
+<table class="table-condensed" style="width:640px; margin-top:20px;">
+    <tr>
+        <td>
+            您分配的反对筹码数量(参与者 {{ player.id_in_group }})：<td align="center">{{ player.contribution }}
+        <td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            其他参与者
+        <td>
+        <td align="center">
+            <!--Allocation of <br> Disapproval points-->
+            分配的反对筹码数量
+        </td>
+    </tr>
+    {% block myform %}
+    {% endblock %}
+    <tr><td>所有成员对公共项目的总投资额是：<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>每个成员从公共项目中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>在分配反对筹码之前您的收益是：<td align="center"><b>{{ player.payoff_s1 }}</tr>
+</table>
+    {% next_button %}
+
+    {% if subsession.round_number > 1 %}
+        {% include 'pgfield_only_ch/History_pg_ch.html' %}
+    {% endif %}
+
+    {% include 'pgfield_only_ch/Instructions_ch.html' %}
+
+{% endblock %}
+

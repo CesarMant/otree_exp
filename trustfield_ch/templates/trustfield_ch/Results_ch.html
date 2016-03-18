@@ -1,0 +1,55 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    最终结果
+{% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group == 1 %}
+    <table class="table">
+        <tr>
+            <th>轮次</th>
+            <th>分配给参与者B的筹码数量</th>
+            <th>参与者B返还的筹码数量</th>
+            <th>各轮收益</th>
+        </tr>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.subsession.round_number }}</td>
+                <td> 您分配了{{ p.group.sent_amount }}筹码。</td>
+                <td> 参与者B返还了{{ p.group.sent_back_amount }}筹码。</td>
+                <td> 您的收益是<b>{{ p.prepayoff }}筹码。</b></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <table class="table">
+        <tr>
+            <th>轮次</th>
+            <th>参与者A分配的筹码数量</th>
+            <th>返还的筹码数量</th>
+            <th>各轮收益</th>
+        </tr>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.subsession.round_number }}</td>
+                <td> 参与者A分配{{ p.group.sent_amount }}筹码。</td>
+                <td> 您返还了{{ p.group.sent_back_amount }}筹码。</td>
+                <td> 您的收益是<b>{{ p.prepayoff }}筹码。</b></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+<p>
+    我们随机选择了 <b>第{{ paying_round }}轮</b> 计算您的收益。<br>
+    在第一部分您得到了 <b>{{ player.payoff_block1 }}</b>.<br>
+</p>
+
+    {% next_button %}
+
+    {% include 'trustfield_ch/Instructions_ch.html' %}
+
+{% endblock %}

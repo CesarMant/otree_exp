@@ -1,0 +1,34 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Questionnaire
+{% endblock %}
+
+{% block content %}
+<p>
+    Thank you for your participation. We kindly ask you to respond to the following questions while
+    we organize the payment of your earnings. To give you more privacy you are encouraged to directly
+    respond each one of the questions. However, if you feel more comfortable if someone reads the questions
+    for you, please let us know. One of our team members will be happy to read the questionnaire for you.<br>
+    <br>
+    We will ask you some questions about you and, if applicable, your spouse.
+    This will help us to understand your family background.
+    The provided information is completely anonymous
+    and the data collected will only be used for research purposes.<br>
+    <br>
+</p>
+
+<p>
+    How connected do you feel, from <b>1 (not at all)</b> to <b>7 (very bonded)</b>, to:
+</p>
+    {% formfield player.identification1 %}
+
+    {% formfield player.identification2 %}
+
+    {% formfield player.identification3 %}
+
+    {% formfield player.identification4 %}
+
+    {% next_button %}
+
+{% endblock %}

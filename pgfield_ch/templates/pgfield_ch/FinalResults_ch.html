@@ -1,0 +1,30 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    最终结果：第二部分
+{% endblock %}
+
+{% block content %}
+
+<h4>历史收益</h4>
+<table class="table">
+    <table class="table">
+        <tr>
+            <th style="text-align:center">轮次</th>
+            <th>筹码</th>
+        </tr>
+        {% for p in player.in_all_rounds %}
+            <tr>
+                <td align="center">{{ p.subsession.round_number }}</td>
+                <td>您得到 {{ p.prepayoff }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</table>
+
+<br>
+您总共从{{ Constants.num_rounds }}轮中得到<b>{{ payoff_block2 }}</b>个筹码<br>
+<br>
+    {% next_button %}
+
+{% endblock %}

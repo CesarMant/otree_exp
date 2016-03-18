@@ -1,0 +1,55 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Thank you for your participation.<br>
+        This activity is part of a study to understand how people take decisions involving others.<br>
+        By attending this invitation you have already earned 40 Yuan
+        that you will get as your promised participation fee.<br>
+        Moreover, you will be paid also for the activity in which you are about to participate.<br>
+        You will be confronted with several decisions that involve real money.<br>
+        How much you earn depends on the choices of you and other participants.<br>
+        <br>
+        The other participants are in this same room taking part of this activity.<br>
+        You will not know who the other participants are, and they will not know who you are.<br>
+        Your choices and outcomes will be confidential.<br>
+        <br>
+        This activity is divided in two blocks.<br>
+        <br>
+        In the <b>first block</b> you will interact with another participant at a time.<br>
+        This interaction will be repeated for five rounds with different participants each round.<br>
+        At the end of the activity we will randomly select one of the rounds of first block to be paid.<br>
+        <br>
+        In the <b>second block</b> you will interact with three other participants at a time.<br>
+        This interaction will be repeated for six rounds with the same group of three participants every round.<br>
+        At the end of the activity all the rounds in the second block will be paid.<br>
+        <br>
+        You will be endowed with points to play.<br>
+        Depending on your decisions you may earn, or lose, additional points.<br>
+        At the end of the activity we will pay you for each point according to this exchange rate:
+        1 point = {{ exchange_rate }} Yuan.<br>
+        We will finish by asking you some questions about yourself.<br>
+        All the collected information will remain confidential and it will be used only with academic purposes.<br>
+        <br>
+        Please do not talk to anyone during the activity.<br>
+        To begin with the activity, please respond the following questions:<br>
+        <br>
+    </p>
+
+    {% formfield player.ethnic_in with label="Please select the ethnic group with which you identify the most" %}
+    {% formfield player.religion_in with label="Please select the religion with which you identify the most" %}
+
+    <p>
+        Please click the next button once you are ready.<br>
+        <br>
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

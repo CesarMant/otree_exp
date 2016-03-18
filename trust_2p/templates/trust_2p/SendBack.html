@@ -1,0 +1,35 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Sender-Receiver Game: Your Choice<br>
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You are participant B. Participant A sent you {{group.sent_amount}}
+        and you received {{tripled_amount}}.<br>
+    </p>
+{% if   subsession.round_number == 2 or subsession.round_number == 4  %}
+    <p>
+        Participant A identifies himself with the {{player.other_eth}} ethnic group.<br>
+    </p>
+{% elif subsession.round_number == 3 or subsession.round_number == 5 %}
+    <p>
+        {% if player.other_relig != 'None (atheist)'%}
+            Participant A identifies himself with the {{player.other_relig}} religion.<br>
+        {% else %}
+            Participant A does not identify himself with any religion.<br>
+        {% endif %}
+    </p>
+{% endif %}
+
+    {% formfield group.sent_back_amount with label="How many points do you want to send back" %}
+
+    {% next_button %}
+
+    {% include 'trustfield/Instructions.html' %}
+
+{% endblock %}

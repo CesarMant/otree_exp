@@ -1,0 +1,40 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Second Stage: Allocation of Disapproval Points<br>
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }} <br>
+{% endblock %}
+
+{% block content %}
+
+<table class="table-condensed" style="width:640px; margin-top:20px;">
+    <tr>
+        <td>
+            You (Player {{ player.id_in_group }}) contributed:<td align="center">{{ player.contribution }}
+        <td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Other participants contributed:
+        <td>
+        <td align="center">
+            Allocation of <br> Disapproval points
+        </td>
+    </tr>
+    {% block myform %}
+    {% endblock %}
+    <tr><td>Your group contributed:<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>Resulting in an individual share of:<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>Your payoff before the allocation of disapproval points:<td align="center"><b>{{ player.payoff_s1 }}</tr>
+</table>
+    {% next_button %}
+
+    {% if subsession.round_number > 1 %}
+        {% include 'pgfield/History_pg.html' %}
+    {% endif %}
+
+    {% include 'pgfield/Instructions.html' %}
+
+{% endblock %}

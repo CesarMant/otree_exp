@@ -1,0 +1,49 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    理解测试的答案解析
+{% endblock %}
+
+{% block content %}
+
+    {% if player.question_trustA == Constants.question_trustA_correct %}
+    <p class="text-success">
+    关于参与者A，您的回答{{player.question_trustA}}是正确的。
+    </p>
+    {% else %}
+    <p class="text-danger">
+    关于参与者A，您的回答{{player.question_trustA}}是错误的。
+    </p>
+    {% endif %}
+    {% if player.question_trustB == Constants.question_trustB_correct %}
+    <p class="text-success">
+    关于参与者B，您的回答{{player.question_trustB}}是正确的。
+    </p>
+    {% else %}
+    <p class="text-danger">
+    关于参与者B，您的回答{{player.question_trustB}}是错误的。
+    </p>
+    {% endif %}
+
+    <p>
+        假设参与者A给了参与者B 30个筹码。<br>
+        收到翻了3倍的筹码后，参与者B给了参与者A 50个筹码。<br>
+        最终，参与者A和参与者B分别收到了多少筹码？<br>
+    </p>
+
+    <p>
+        <strong>答案：参与者A得到70个筹码，而参与者B得到40个筹码。</strong>
+    </p>
+
+    <p>
+        <strong>解析：</strong> 参与者A给了参与者B 30个筹码。这部分筹码被翻了3倍，所以参与者B收到了received 30*3=90 个筹码.<br>
+        然后参与者B给了参与者A 50个筹码，参与者A收到了50个筹码。<br>
+        所以，最终参与者A有50-30+50=70个筹码，参与者B有90-50=40个筹码。<br>
+    </p>
+
+    {% next_button %}
+
+    {% include 'trustfield_ch/Instructions_ch.html' %}
+
+{% endblock %}

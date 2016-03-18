@@ -1,0 +1,65 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    问题解析
+{% endblock %}
+
+{% block content %}
+
+    {% if player.question_pg1 == Constants.question_pg1_correct %}
+    <p class="text-success">
+    第一问，您的回答{{player.question_pg1}}是正确的。
+    </p>
+    {% else %}
+    <p class="text-danger">
+    第一问，您的回答{{player.question_pg1}}是错误的。
+    </p>
+    {% endif %}
+        {% if player.question_pg2 == Constants.question_pg2_correct %}
+    <p class="text-success">
+    第二问，您的回答{{player.question_pg2}}是正确的。
+    </p>
+    {% else %}
+    <p class="text-danger">
+    第二问，您的回答{{player.question_pg2}}是错误的。
+    </p>
+    {% endif %}
+
+    <p>
+        假设第一阶段中：<br>
+        参与者1贡献了10个筹码给公共账户，<br>
+        参与者2贡献了8个筹码，<br>
+        参与者3贡献了6个筹码，<br>
+        参与者4贡献了一个筹码。<br>
+        <br>
+        然后，在第二阶段
+        参与者3使用了一个反对筹码，<br>
+        另外，他/她收到了一个来自其他参与者的反对筹码。<br>
+        <br>
+    </p>
+        在第二阶段开始之前和结束之后参与者3分别拥有多少筹码？<br>
+    </p>
+
+    <p>
+        <strong>答案：在第二阶段<b>开始之前</b>， 他/她有14个筹码。在第二阶段 <b>结束之后</b>，他/她有10个筹码。</strong>
+    </p>
+
+    <p>
+        <strong>解析:</strong><br>
+        第一阶段，所有参与者共向公共账户投资了10+8+6+1=25个筹码。因此，公共账户的总额是25 x 1.6=40个筹码。<br>
+        将公共账户中的筹码数平分之后，每个参与者得到40/4=10个筹码。<br>
+        所以，在第二阶段<b>开始之前</b>，参与者3拥有的筹码数量为 10-6+10=14。<br>
+        <br>
+        然后，参与者3对其他参与者使用了一个反对筹码。<br>
+        为此，他/她支付了一个筹码。<br>
+        另外，他/她收到了一个反对筹码。<br>
+        为此，他/她又失去了三个筹码。<br>
+        所以，在第二阶段<b>结束之后</b>，参与者3拥有的筹码数量为 14-1-3=10。<br>
+    </p>
+
+    {% next_button %}
+
+    {% include 'pgfield_ch/Instructions_ch.html' %}
+
+{% endblock %}

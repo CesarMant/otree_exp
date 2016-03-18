@@ -1,0 +1,37 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    最终结果<br>
+    轮次： {{ subsession.round_number }} / {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+<table class="table-condensed" style="width:600px; margin-top:20px;">
+    <tr><td>您的初始筹码数量是：<td align="center">{{ Constants.endowment }}</tr>
+    <tr><td>您对公共账户的投资是：<td align="center">{{ player.contribution }}</tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr><td>您们整个组对公共项目的总投资额是：<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>每个人从公共项目中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>在投反对筹码之前您的收益是：<td align="center"><b>{{ player.payoff_s1 }} </b></tr>
+    <tr><td colspan="2"><hr/></td></tr>
+    <tr><td>您因为收到反对筹码而损失的筹码数量是：<td align="center" style="color:#ff0000">
+        {% if player.id_in_group == 1 %}   {{ eff_punish_p1 }}
+        {% elif player.id_in_group == 2 %} {{ eff_punish_p2 }}
+        {% elif player.id_in_group == 3 %} {{ eff_punish_p3 }}
+        {% elif player.id_in_group == 4 %} {{ eff_punish_p4 }}
+        {% endif %}
+    </tr>
+    <tr><td>您分配反对筹码的成本：<td align="center" style="color:#ff0000">{{ player.punish_exp}}</tr>
+    <tr><td>分配反对筹码后您的收益：<td align="center"><b>{{ player.prepayoff }}</tr>
+    <tr><td></tr>
+</table>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    First Stage: Allocation to the Public Fund<br>
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }} <br>
+{% endblock %}
+
+{% block content %}
+
+<p>
+    We are at the stage of allocation to the public fund.<br>
+    {% if player.id_in_group == 1 %}   The ethnicity of the other group members is: {{ethnicity_p2}}, {{ethnicity_p3}} and {{ethnicity_p4}}.<br>
+    {% elif player.id_in_group == 2 %} The ethnicity of the other group members is: {{ethnicity_p1}}, {{ethnicity_p3}} and {{ethnicity_p4}}.<br>
+    {% elif player.id_in_group == 3 %} The ethnicity of the other group members is: {{ethnicity_p1}}, {{ethnicity_p2}} and {{ethnicity_p4}}.<br>
+    {% elif player.id_in_group == 4 %} The ethnicity of the other group members is: {{ethnicity_p1}}, {{ethnicity_p2}} and {{ethnicity_p3}}.<br>
+    {% endif %}
+    <br>
+    Please make your choice.<br>
+
+</p>
+
+    {% formfield player.contribution with label="How many points do you want to allocate in the public fund?" %}
+
+    {% next_button %}
+
+    {% if subsession.round_number > 1 %}
+        {% include 'pgfield/History_pg.html' %}
+    {% endif %}
+
+    {% include 'pgfield/Instructions.html' %}
+
+{% endblock %}
