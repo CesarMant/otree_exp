@@ -4,7 +4,7 @@
 <tr>
     <td align="right">
         {% with player.get_others_in_group.0 as p %}
-            Player {{ p.id_in_group }} ({{ p.get_ethnicity }} ethnicity):<td align="center">{{ p.contribution }}
+            参与者 {{ p.id_in_group }} ({{ p.get_ethnicity }}  族):<td align="center">{{ p.contribution }}
         {% endwith %}
     </td>
     <td>
@@ -14,7 +14,7 @@
 <tr>
     <td align="right">
         {% with player.get_others_in_group.1 as p %}
-            Player {{ p.id_in_group }} ({{ p.get_ethnicity }} ethnicity):<td align="center">{{ p.contribution }}
+            参与者 {{ p.id_in_group }} ({{ p.get_ethnicity }} 族):<td align="center">{{ p.contribution }}
         {% endwith %}
     </td>
     <td>
@@ -24,7 +24,7 @@
 <tr>
     <td align="right">
         {% with player.get_others_in_group.2 as p %}
-            Player {{ p.id_in_group }} ({{ p.get_ethnicity }} ethnicity):<td align="center">{{ p.contribution }}
+            参与者 {{ p.id_in_group }} ({{ p.get_ethnicity }} 族):<td align="center">{{ p.contribution }}
         {% endwith %}
     </td>
     <td>

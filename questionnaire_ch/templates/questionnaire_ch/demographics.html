@@ -1,0 +1,70 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    问卷调查: 第一页/共四页
+{% endblock %}
+
+{% block content %}
+<p>
+    感谢您的参与！现在我们的项目成员正在准备您的报酬，麻烦您在等待的时候回答一些问题。
+    为了保证您的隐私，您可以直接独立作答。当然，如果您觉得我们的工作人员给您念题目的方式会让
+    您更舒服，请告诉我们，我们的项目成员将非常高兴为您读题目。<br>
+    <br>
+    接下来我们将问您一些关于您和您亲属的问题。我们保证您提供的所有信息都将是匿名的而且仅
+    会被用于科学研究。<br>
+    <br>
+</p>
+
+<p>
+    您的出生年月是？
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.year_birth %}
+            <td>{% formfield player.month_birth %}
+        </tr>
+    </table>
+
+<p>
+    您从什么时候开始住在西双版纳？
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.living_Xsh %}
+            <td>{% formfield player.year_Xsh %}
+        </tr>
+    </table>
+
+    {% formfield player.gender %}
+
+    {% formfield player.ethnic_self %}
+
+    {% formfield player.relig_self %}
+
+    {% formfield player.marital_status %}
+
+    {% formfield player.education %}
+
+    {% formfield player.hh_register %}
+
+<p>
+    <b>您现在的住址是？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.current_register %}
+            <td>{% formfield player.other_register %}
+        </tr>
+    </table>
+
+
+    {% formfield player.employment %}
+
+    {% formfield player.health %}
+
+<p>
+    总的来说，如果<b>1代表非常满意</b> ，<b>10代表非常不满意</b> ，您会如何评价您对自己生活的满意程度？
+</p>
+
+    {% formfield player.satisfaction %}
+
+    {% next_button %}
+
+{% endblock %}

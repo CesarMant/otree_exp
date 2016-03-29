@@ -6,12 +6,14 @@
 
 {% block content %}
 <p>
-    感谢您的参与。请您稍作等待，在我们的工作人员叫到您的编号后，可以来领取您的报酬。<br>
+    感谢您的参与。请您保持安静，坐在原位稍等一会儿，在我们的工作人员叫到您的编号后，到前台领取您的报酬。<br>
     <br>
     在本实验的第一部分，您得到的报酬是{{ player.payoff_block1 }}。<br>
     在第二部分，您得到的报酬是{{ player.payoff_block2 }}。<br>
     <br>
     所以您总共得到的报酬是 <b>{{ player.payoff }}</b>。<br>
+    根据1点筹码={{exchange_rate}}元的转换率，您得到的报酬等价于<b>{{ payoff_yuan|floatformat:0 }} 元</b>。<br>
+    加上出场费 {{ show_up }} 元，您最终的报酬是<b>{{ final_earnings|floatformat:0 }} 元</b>。<br>
     <br>
 </p>
     {% next_button %}

@@ -1,0 +1,160 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Questionnaire: Page 4 of 4
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.hh_income %}
+
+    {% formfield player.income_contribute %}
+
+<p>
+    <b>Do you contribute to the household income you declared above?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.self_contribute %}
+            <td>{% formfield player.self_contrib_amount %}
+        </tr>
+    </table>
+
+    {% formfield player.income_dependence %}
+
+    {% formfield player.relative_wealth %}
+
+<p>
+    <b>What is your father's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_father %}
+            <td>{% formfield player.ethnic_father_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What is your mother's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_mother %}
+            <td>{% formfield player.ethnic_mother_other %}
+        </tr>
+    </table>
+
+    {% formfield player.marriage_ethnicity %}
+
+
+{% if player.marital_status == 'Married' %}
+
+<p>
+    <b>What is your spouse's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What is your spouse's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Married+' %}
+
+<p>
+    <b>What is your spouse's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What is your spouse's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Cohabiting' %}
+
+<p>
+    <b>What is your couple's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What is your couple's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Widowed' %}
+
+<p>
+    <b>What was your spouse's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What was your spouse's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Separated' %}
+
+<p>
+    <b>What is your former spouse's ethnicity?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What is your former spouse's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+
+    {% next_button %}
+
+{% endblock %}

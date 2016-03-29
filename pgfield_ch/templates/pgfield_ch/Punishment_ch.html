@@ -10,18 +10,18 @@
 <table class="table-condensed" style="width:640px; margin-top:20px;">
     <tr>
         <td>
-            您分配的反对筹码数量(参与者 {{ player.id_in_group }})：<td align="center">{{ player.contribution }}
+            您第一环节向公共账户投资了(参与者 {{ player.id_in_group }})：<td align="center">{{ player.contribution }}
         <td>
         <td>
         </td>
     </tr>
     <tr>
         <td>
-            其他参与者
+            其他参与者第一环节分别向公共账户投资了
         <td>
         <td align="center">
             <!--Allocation of <br> Disapproval points-->
-            分配的反对筹码数量
+            向公共账户投资的筹码数量
         </td>
     </tr>
     {% block myform %}
@@ -30,6 +30,10 @@
     <tr><td>每个成员从公共项目中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
     <tr><td>在分配反对筹码之前您的收益是：<td align="center"><b>{{ player.payoff_s1 }}</tr>
 </table>
+    <p>
+        一旦您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        <br>
+    </p>
     {% next_button %}
 
     {% if subsession.round_number > 1 %}

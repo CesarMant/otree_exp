@@ -13,6 +13,8 @@
     You earned {{ player.payoff_block2 }} from the game in the second block.<br>
     <br>
     In total you earned <b>{{ player.payoff }}</b>.<br>
+    At the exchange rate of 1 point = {{exchange_rate}} yuan, these points are equivalent to <b>{{ payoff_yuan|floatformat:0 }} yuan</b>.<br>
+    Adding the participation fee of {{ show_up }} yuan, your final earnings are <b>{{ final_earnings|floatformat:0 }} yuan</b>.<br>
     <br>
 </p>
     {% next_button %}

@@ -32,11 +32,12 @@
     If the other {{ n_minus_one }} group members allocate in total {{ contrib_others_high|floatformat:0 }} points to the public fund,
     then you will receive (21+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
     = {{ payoff_ex_high|floatformat:1 }} points from the public fund.<br>
-    They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund.<br>
+    They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund for a total of {{ payoff_high|floatformat:0 }} points.<br>
+    <br>
     Suppose now that the other {{ n_minus_one }} group members allocate in total {{ contrib_others_low|floatformat:0 }} points to the public fund,
     then you will receive (9+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
     = {{ payoff_ex_low|floatformat:1 }} points from the public fund.<br>
-    They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund.<br>
+    They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund for a total of {{ payoff_low|floatformat:0 }} points.<br>
 
     <br>
     <b>Second Stage: Allocation of disapproval points</b><br>

@@ -138,7 +138,8 @@ class SendBack_ch(Page):
 
     def vars_for_template(self):
         return {
-            'tripled_amount': self.group.sent_amount * Constants.mult_factor
+            'tripled_amount': self.group.sent_amount * Constants.mult_factor,
+            'sent_A': Constants.endowment - self.group.sent_amount,
             }
 
     def sent_back_amount_choices(self):
@@ -175,9 +176,9 @@ class Results_ch(Page):
 
 page_sequence = [
     Welcome_ch,
-    # WelcomeTrust_ch,
-    # Question_trust_ch,
-    # Feedback_trust_ch,
+    WelcomeTrust_ch,
+    Question_trust_ch,
+    Feedback_trust_ch,
     ShuffleWaitPage,
     Send_ch,
     WaitForP1,

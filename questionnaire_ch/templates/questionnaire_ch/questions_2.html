@@ -1,0 +1,65 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    问卷调查: 第三页/共四页
+{% endblock %}
+
+{% block content %}
+<p>
+    感谢您的参与！现在我们的项目成员正为支付您的报酬做准备，麻烦您在等待的时候回答一些问题。
+    为了保证您的隐私，您可以直接独立作答。当然，如果您觉得我们的工作人员给您念题目的方式会让
+    您更舒服，请告诉我们，我们的项目成员将非常高兴为您读题目。<br>
+    <br>
+
+</p>
+
+    {% formfield player.trust1 %}
+
+    {% formfield player.trust2 %}
+
+    {% formfield player.trust3 %}
+
+    {% formfield player.trust4 %}
+
+    {% formfield player.trust5 %}
+
+    {% formfield player.pray %}
+
+    {% formfield player.relig_activ %}
+
+    {% formfield player.temple %}
+
+<p>
+    <b>在过去十二个月里，您是否向教堂、寺庙、道观、清真寺或其他宗教机构或者个人，例如神父、牧师、和尚、道士、尼姑及阿訇等捐过钱或物？买香火也算。</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.donation %}
+            <td>{% formfield player.donated_amount %}
+        </tr>
+    </table>
+
+    {% formfield player.importance_relig %}
+
+<p>
+    <b>您父亲的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_father %}
+            <td>{% formfield player.relig_father_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您母亲的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_mother %}
+            <td>{% formfield player.relig_mother_other %}
+        </tr>
+    </table>
+
+    {% formfield player.marriage_religion %}
+
+    {% next_button %}
+
+{% endblock %}

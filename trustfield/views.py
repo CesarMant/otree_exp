@@ -138,7 +138,8 @@ class SendBack(Page):
 
     def vars_for_template(self):
         return {
-            'tripled_amount': self.group.sent_amount * Constants.mult_factor
+            'tripled_amount': self.group.sent_amount * Constants.mult_factor,
+            'sent_A': Constants.endowment - self.group.sent_amount
             }
 
     def sent_back_amount_choices(self):
@@ -175,10 +176,10 @@ class Results(Page):
 
 page_sequence = [
     Welcome,
-    # WelcomeTrust,
-    # Question_trust,
-    # Feedback_trust,
-    ShuffleWaitPage,
+    WelcomeTrust,
+    Question_trust,
+    Feedback_trust,
+    #ShuffleWaitPage,
     Send,
     WaitForP1,
     SendBack,

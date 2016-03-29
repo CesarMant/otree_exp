@@ -42,7 +42,7 @@ class Constants(BaseConstants):
 
     # Variable for the matching
     # num_senders_per_type = (number of players in the session)/4
-    num_senders_per_type = 3
+    num_senders_per_type = 4
 
 
 class Subsession(BaseSubsession):

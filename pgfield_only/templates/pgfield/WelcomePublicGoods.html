@@ -1,0 +1,67 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    The Public Goods Game
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    This is the <b>second block</b> of the activity.<br>
+    <br>
+    In this block you have been matched with {{ n_minus_one}} other participants.<br>
+    You have received {{ Constants.endowment }}. Each one of the other {{ n_minus_one }} participants have also received {{ Constants.endowment }}.<br>
+    <!--These points are in addition to the {{ Constants.showupfee }} Yuan-->
+    <!--that you will get as your promised participation fee.<br>-->
+
+    <br>
+    <b>First Stage: Allocation to the public fund</b><br>
+    <br>
+    You get to decide whether you are going to allocate your points in a public fund or keep them in the private fund.<br>
+    You decide how many of your {{ Constants.endowment }} you would like to allocate in the public fund.<br>
+    That is completely of your choice.<br>
+    The remaining points will remain in your private fund.<br>
+    We will multiply by {{ Constants.effic_factor }} the points that you allocate in the public fund.<br>
+    The money allocated by other group members to the public fund will be also multiplied by {{ Constants.effic_factor }}.<br>
+    The points in the public fund will be divided equally among the {{ Constants.players_per_group }} group members.<br>
+    Every group member gets from the public fund exactly the same number of points, no matter how many they allocate in this fund.<br>
+    The number of points you receive at the end depends on your decisions and the decisions of the people in your group.<br>
+    <br>
+    For example, let us suppose that you decide to allocate {{ endowment_2|floatformat:0 }} points to the public fund.<br>
+    If the other {{ n_minus_one }} group members allocate in total {{ contrib_others_high|floatformat:0 }} points to the public fund,
+    then you will receive (21+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
+    = {{ payoff_ex_high|floatformat:1 }} points from the public fund.<br>
+    They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund.<br>
+    Suppose now that the other {{ n_minus_one }} group members allocate in total {{ contrib_others_low|floatformat:0 }} points to the public fund,
+    then you will receive (9+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
+    = {{ payoff_ex_low|floatformat:1 }} points from the public fund.<br>
+    They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund.<br>
+
+    <br>
+    <b>Second Stage: Allocation of disapproval points</b><br>
+    <br>
+    At the beginning of this stage you will see how much each of the other group members contributed to the public fund.<br>
+    <!--At this stage you can also reduce the income of each group member by distributing disapproval points.<br>-->
+    You decide if you allocate disapproval points to the other group members.<br>
+    Each disapproval point a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>
+    Each disapproval point you allocate to others reduces your income in 1 point.<br>
+    The other group members can also allocate to you their disapproval points if the wish to.<br>
+    <br>
+    You must now decide how many points to give to each of the other three group members. You must enter a number for each of them.<br>
+    If you do not want to allocate disapproval points on a specific group member then you must enter zero (0).<br>
+    <!--Each disapproval point a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>-->
+    You can distribute between 0 and {{ Constants.endowment }} points to each group member.
+    The more points you give to any group member, the higher your costs.<br>
+    Your total costs are equal to the sum of the costs of disapproval points assigned to each of the other three group members.<br>
+    <br>
+    For example, let us suppose that you decide to assign 0, 1 and 1 disapproval points to your group members, respectively.<br>
+    In addition, let us suppose that 1 disapproval point was assigned to you.<br>
+    Your payoff will be reduced 5 points in total: 2 points that you spent on disapproval points assigned to the other group members,<br>
+    plus 3 points deducted from 1 disapproval point that was assigned to you.<br>
+    <br>
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

@@ -28,7 +28,7 @@ class Constants(BaseConstants):
 
     endowment = c(10)
     showupfee = c(40)
-    effic_factor = 1.6 # Efficiency factor for the public goods game
+    effic_factor = 2 # Efficiency factor for the public goods game
     punish_tech = 3    # Efficiency of the punishment technology: 1 spent point reduces the payoff 3 points
 
     # Variables to call ethnicity and religion

@@ -9,6 +9,8 @@ from .models import Constants
 import random
 
 class WelcomePublicGoods(Page):
+    wait_for_all_groups = True
+
     def is_displayed(self):
         return self.subsession.round_number == 1
 
@@ -23,7 +25,9 @@ class WelcomePublicGoods(Page):
             'contrib_total_high': Constants.endowment * (Constants.players_per_group - 1)* 0.7 + Constants.endowment / 2,
             'contrib_total_low': Constants.endowment * (Constants.players_per_group - 1)* 0.3 + Constants.endowment / 2,
             'payoff_ex_high': Constants.endowment * ((Constants.players_per_group - 1)* 0.7 + 0.5) * (Constants.effic_factor / Constants.players_per_group),
-            'payoff_ex_low': Constants.endowment * ((Constants.players_per_group - 1)* 0.3 + 0.5) * (Constants.effic_factor / Constants.players_per_group)
+            'payoff_ex_low':  Constants.endowment * ((Constants.players_per_group - 1)* 0.3 + 0.5) * (Constants.effic_factor / Constants.players_per_group),
+            'payoff_high': Constants.endowment * 0.5 + Constants.endowment * ((Constants.players_per_group - 1)* 0.7 + 0.5) * (Constants.effic_factor / Constants.players_per_group),
+            'payoff_low':  Constants.endowment * 0.5 + Constants.endowment * ((Constants.players_per_group - 1)* 0.3 + 0.5) * (Constants.effic_factor / Constants.players_per_group),
             }
 
 class Question_pg(Page):

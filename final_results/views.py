@@ -22,6 +22,10 @@ class Final_Payment(Page):
         return{
             'payoff_block1' : self.player.payoff_block1,
             'payoff_block2' : self.player.payoff_block2,
+            'exchange_rate': 0.4,
+            'payoff_yuan': self.player.payoff * 0.4,
+            'show_up': 40,
+            'final_earnings': self.player.payoff * 0.4 + 40,
         }
 
 

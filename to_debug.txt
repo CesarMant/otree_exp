@@ -1,6 +1,6 @@
-########################################################################
-##### List of errors in the experiment that need to be debugged ########
-########################################################################
+#####################################################################
+##### List of errors in the experiment that need to be debugged #####
+#####################################################################
 
 # General overview of the experiment
 The full experiment consists of two blocks.

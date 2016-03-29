@@ -1,0 +1,72 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Questionnaire: Page 1 of 4
+{% endblock %}
+
+{% block content %}
+<p>
+    Thank you for your participation. We kindly ask you to respond to the following questions while
+    we organize the payment of your earnings. To give you more privacy you are encouraged to directly
+    respond each one of the questions. However, if you feel more comfortable if someone reads the questions
+    for you, please let us know. One of our team members will be happy to read the questionnaire for you.<br>
+    <br>
+    We will ask you some questions about you and your family background.
+    The provided information is completely anonymous,
+    and the collected data will be used only for research purposes.<br>
+    <br>
+</p>
+
+<p>
+    When were you born?
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.year_birth %}
+            <td>{% formfield player.month_birth %}
+        </tr>
+    </table>
+
+<p>
+    <b>When did you start living in Xishuangbanna?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.living_Xsh %}
+            <td>{% formfield player.year_Xsh %}
+        </tr>
+    </table>
+
+    {% formfield player.gender %}
+
+    {% formfield player.ethnic_self %}
+
+    {% formfield player.relig_self %}
+
+    {% formfield player.marital_status %}
+
+    {% formfield player.education %}
+
+    {% formfield player.hh_register %}
+
+<p>
+    <b>Where do you live currently?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.current_register %}
+            <td>{% formfield player.other_register %}
+        </tr>
+    </table>
+
+    {% formfield player.employment %}
+
+    {% formfield player.health %}
+
+<p>
+    All things considered, how would you rate your satisfaction with your life
+    from <b>1 (completely satisfied)</b> to <b> 10 (completely unsatisfied)?
+</p>
+
+    {% formfield player.satisfaction %}
+
+    {% next_button %}
+
+{% endblock %}

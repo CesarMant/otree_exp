@@ -1,0 +1,37 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Understanding Question
+{% endblock %}
+
+{% block content %}
+    <p>
+        Suppose in a group during the first stage:<br>
+        A participant contributed 10 points,<br>
+        another participant contributed 8 points,<br>
+        another participant contributed 6 points and <br>
+        another participant contributed 1 point.<br>
+        <br>
+        Aftwerwards, in the second stage:
+        The participant who contributed 6 points spent one disapproval point.<br>
+        One disapproval point is assigned to the participant who contributed 6 points.<br>
+        <br>
+    </p>
+    <p>
+        What would be the payoff of the participant who contributed 6 points <b>before</b> the second stage?<br>
+    </p>
+
+    {% formfield player.question_pg1 with label="His payoff would be" %}
+
+    <p>
+        What would be the payoff of the participant who contributed 6 points <b>after</b> the second stage?<br>
+    </p>
+
+    {% formfield player.question_pg2 with label="His payoff would be" %}
+
+    {% next_button %}
+
+    {% include 'pgfield/Instructions.html' %}
+
+{% endblock %}

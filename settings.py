@@ -63,8 +63,8 @@ USE_POINTS = True
 
 # e.g. en-gb, de-de, it-it, fr-fr, zh-cn, zh-hans.
 # see: https://docs.djangoproject.com/en/1.6/topics/i18n/
-#LANGUAGE_CODE = 'zh-cn'
-LANGUAGE_CODE = 'en-gb'
+LANGUAGE_CODE = 'zh-cn'
+#LANGUAGE_CODE = 'en-gb'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = []
@@ -156,14 +156,14 @@ SESSION_CONFIGS = [
         {
         'name': 'full_game',
         'display_name': "Full game: Trust Game + Public Goods Game",
-        'num_demo_participants': 12,
-        'app_sequence': ['trustfield','pgfield','final_results'],
+        'num_demo_participants': 20,
+        'app_sequence': ['trustfield','pgfield','questionnaire','final_results'],
     },
             {
         'name': 'full_game_ch',
         'display_name': "Full game: Trust Game + Public Goods Game (in Chinese)",
-        'num_demo_participants': 12,
-        'app_sequence': ['trustfield_ch','pgfield_ch','final_results_ch'],
+        'num_demo_participants': 16,
+        'app_sequence': ['trustfield_ch','pgfield_ch','questionnaire_ch','final_results_ch'],
     },
             {
         'name': 'questionnaire',
@@ -171,11 +171,24 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['questionnaire'],
     },
+    
+            {
+        'name': 'questionnaire_ch',
+        'display_name': "Post-experimental questionnaire (in Chinese)",
+        'num_demo_participants': 1,
+        'app_sequence': ['questionnaire_ch'],
+    },
             {
         'name': 'trust_2p',
         'display_name': "Trust Game (two players/no matching)",
-        'num_demo_participants': 2,
-        'app_sequence': ['trust_2p'],
+        'num_demo_participants': 4,
+        'app_sequence': ['trustfield'],
+    },
+            {
+        'name': 'final_results',
+        'display_name': "Final payoff",
+        'num_demo_participants': 1,
+        'app_sequence': ['final_results'],
     }
 ]    
 

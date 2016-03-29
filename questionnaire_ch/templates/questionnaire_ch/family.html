@@ -1,0 +1,160 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    问卷调查: 第四页/共四页
+{% endblock %}
+
+{% block content %}
+
+    {% formfield player.hh_income %}
+
+    {% formfield player.income_contribute %}
+
+<p>
+    <b>前面提到的家庭收入包括您的个人收入吗？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.self_contribute %}
+            <td>{% formfield player.self_contrib_amount %}
+        </tr>
+    </table>
+
+    {% formfield player.income_dependence %}
+
+    {% formfield player.relative_wealth %}
+
+<p>
+    <b>您父亲的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_father %}
+            <td>{% formfield player.ethnic_father_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您母亲的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_mother %}
+            <td>{% formfield player.ethnic_mother_other %}
+        </tr>
+    </table>
+
+    {% formfield player.marriage_ethnicity %}
+
+
+{% if player.marital_status == 'Married' %}
+
+<p>
+    <b>您配偶的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您配偶的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Married+' %}
+
+<p>
+    <b>您配偶的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您配偶的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Cohabiting' %}
+
+<p>
+    <b>您配偶的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您配偶的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Widowed' %}
+
+<p>
+    <b>您过世的配偶以前的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您过世的配偶以前的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+{% if player.marital_status == 'Separated' %}
+
+<p>
+    <b>您之前的配偶的民族是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.ethnic_spouse %}
+            <td>{% formfield player.ethnic_spouse_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>您之前的配偶的宗教信仰是什么？</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_spouse %}
+            <td>{% formfield player.relig_spouse_other %}
+        </tr>
+    </table>
+{% endif %}
+
+
+
+    {% next_button %}
+
+{% endblock %}

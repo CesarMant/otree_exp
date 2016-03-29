@@ -9,8 +9,9 @@
 {% block content %}
 
     <p>
-        You are participant B. Participant A sent you {{group.sent_amount}}
-        and you received {{tripled_amount}}.<br>
+        You are participant B.<br>
+        Participant A sent you {{group.sent_amount}} and kept {{sent_A}}.<br>
+        You received {{tripled_amount}}.<br>
     </p>
 {% if   subsession.round_number == 2 or subsession.round_number == 4  %}
     <p>
@@ -27,6 +28,11 @@
 {% endif %}
 
     {% formfield group.sent_back_amount with label="How many points do you want to send back" %}
+
+    <p>
+        Please click the blue button <b>"next"</b> once you make your decision.<br>
+        <br>
+    </p>
 
     {% next_button %}
 

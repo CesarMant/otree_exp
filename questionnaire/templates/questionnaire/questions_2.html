@@ -1,0 +1,65 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Questionnaire: Page 3 of 4
+{% endblock %}
+
+{% block content %}
+<p>
+    Thank you for your participation. We kindly ask you to respond to the following questions while
+    we organize the payment of your earnings. To give you more privacy you are encouraged to directly
+    respond each one of the questions. However, if you feel more comfortable if someone reads the questions
+    for you, please let us know. One of our team members will be happy to read the questionnaire for you.<br>
+    <br>
+</p>
+
+    {% formfield player.trust1 %}
+
+    {% formfield player.trust2 %}
+
+    {% formfield player.trust3 %}
+
+    {% formfield player.trust4 %}
+
+    {% formfield player.trust5 %}
+
+    {% formfield player.pray %}
+
+    {% formfield player.relig_activ %}
+
+    {% formfield player.temple %}
+
+<p>
+    <b>Did you donate to religious organizations, temples, or churches, or to any clergy within past 12 months?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.donation %}
+            <td>{% formfield player.donated_amount %}
+        </tr>
+    </table>
+
+    {% formfield player.importance_relig %}
+
+<p>
+    <b>What is your father's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_father %}
+            <td>{% formfield player.relig_father_other %}
+        </tr>
+    </table>
+
+<p>
+    <b>What is your mother's confession?</b>
+</p>
+    <table class="table-condensed">
+        <tr><td>{% formfield player.relig_mother %}
+            <td>{% formfield player.relig_mother_other %}
+        </tr>
+    </table>
+
+    {% formfield player.marriage_religion %}
+
+    {% next_button %}
+
+{% endblock %}

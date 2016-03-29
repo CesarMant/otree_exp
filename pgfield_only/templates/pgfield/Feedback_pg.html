@@ -1,0 +1,65 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Solution to Understanding Question
+{% endblock %}
+
+{% block content %}
+
+    {% if player.question_pg1 == Constants.question_pg1_correct %}
+    <p class="text-success">
+    Your answer {{player.question_pg1}} for participant A was correct.
+    </p>
+    {% else %}
+    <p class="text-danger">
+    Your answer {{player.question_pg1}} for participant A was incorrect.
+    </p>
+    {% endif %}
+        {% if player.question_pg2 == Constants.question_pg2_correct %}
+    <p class="text-success">
+    Your answer {{player.question_pg2}} for participant A was correct.
+    </p>
+    {% else %}
+    <p class="text-danger">
+    Your answer {{player.question_pg2}} for participant A was incorrect.
+    </p>
+    {% endif %}
+
+    <p>
+        Suppose in a group during the first stage:<br>
+        A participant contributed 10 points,<br>
+        another participant contributed 8 points,<br>
+        another participant contributed 6 points and <br>
+        another participant contributed 1 point.<br>
+        <br>
+        Aftwerwards, in the second stage:
+        The participant who contributed 6 points spent one disapproval point.<br>
+        One disapproval point is assigned to the participant who contributed 6 points.<br>
+        <br>
+    </p>
+        What would be the payoff of the participant who contributed 6 points before and after the second stage?<br>
+    </p>
+
+    <p>
+        <strong>Solution: 14 points <b>before</b> the second stage and 10 points <b>after</b> the second stage</strong>
+    </p>
+
+    <p>
+        <strong>Explanation:</strong><br>
+        Total contribution from all participants was 10+8+6+1=25. Total earnings from the project were 25 x 1.6=40.<br>
+        Each participant got an equal share of the earnings, that is, 40/4=10. <br>
+        Hence, the payoff for the participant who contributed 6 points <b>before the second stage</b> was 10-6+10=14.<br>
+        <br>
+        The participant who contributed 6 points spent one of his points assigning a disapproval point to another participant.<br>
+        One point is deducted from his payoff.<br>
+        One disapproval point was assigned to the participant who contributed 6 points.<br>
+        Three additional points are deducted from his payoff.<br>
+        Hence, the payoff for the participant who contributed 6 points <b>after the second stage</b> was 14-1-3=10.<br>
+    </p>
+
+    {% next_button %}
+
+    {% include 'pgfield/Instructions.html' %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    Second Stage: Allocation of Disapproval Points<br>
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }} <br>
+{% endblock %}
+
+{% block content %}
+
+<table class="table-condensed" style="width:640px; margin-top:20px;">
+    <tr><td>You (Player {{ player.id_in_group }}) contributed:<td align="center">{{ player.contribution }}
+        <td>
+        {% if   player.id_in_group == 1 %} {% formfield player.punish_p1 with label="" %}
+        {% elif player.id_in_group == 2 %} {% formfield player.punish_p2 with label="" %}
+        {% elif player.id_in_group == 3 %} {% formfield player.punish_p3 with label="" %}
+        {% elif player.id_in_group == 4 %} {% formfield player.punish_p4 with label="" %}
+        {% endif %}
+    </tr>
+    <tr><td>Other participants contributed:<td><td align="center">Disapproval points</tr>
+    {% for p in player.get_others_in_group %}
+        <tr><td align="right">
+            {% if p.id_in_group == 1 %}   Player {{ p.id_in_group }} ({{ ethnicity_p1 }} ethnicity):<td align="center">{{ p.contribution }}
+            {% elif p.id_in_group == 2 %} Player {{ p.id_in_group }} ({{ ethnicity_p2 }} ethnicity):<td align="center">{{ p.contribution }}
+            {% elif p.id_in_group == 3 %} Player {{ p.id_in_group }} ({{ ethnicity_p3 }} ethnicity):<td align="center">{{ p.contribution }}
+            {% elif p.id_in_group == 4 %} Player {{ p.id_in_group }} ({{ ethnicity_p4 }} ethnicity):<td align="center">{{ p.contribution }}
+            {% endif %}
+        <td align="center">
+            {% if p.id_in_group == 1 %}   {% formfield player.punish_p1 with label="" %}
+            {% elif p.id_in_group == 2 %} {% formfield player.punish_p2 with label="" %}
+            {% elif p.id_in_group == 3 %} {% formfield player.punish_p3 with label="" %}
+            {% elif p.id_in_group == 4 %} {% formfield player.punish_p4 with label="" %}
+            {% endif %}
+        </tr>
+    {% endfor %}
+    <tr><td>Your group contributed:<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>Resulting in an individual share of:<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>Your payoff before the allocation of disapproval points:<td align="center"><b>{{ player.payoff_s1 }}</tr>
+</table>
+
+    {% next_button %}
+
+    {% if subsession.round_number > 1 %}
+        {% include 'pgfield/History_pg.html' %}
+    {% endif %}
+
+    {% include 'pgfield/Instructions.html' %}
+
+{% endblock %}
+
+
+
+
+

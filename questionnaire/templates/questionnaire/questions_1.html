@@ -1,7 +1,7 @@
 {% extends "global/Base.html" %} {% load staticfiles otree_tags %}
 
 {% block title %}
-    Questionnaire
+    Questionnaire: Page 2 of 4
 {% endblock %}
 
 {% block content %}
@@ -11,15 +11,10 @@
     respond each one of the questions. However, if you feel more comfortable if someone reads the questions
     for you, please let us know. One of our team members will be happy to read the questionnaire for you.<br>
     <br>
-    We will ask you some questions about you and, if applicable, your spouse.
-    This will help us to understand your family background.
-    The provided information is completely anonymous
-    and the data collected will only be used for research purposes.<br>
-    <br>
 </p>
 
 <p>
-    How connected do you feel, from <b>1 (not at all)</b> to <b>7 (very bonded)</b>, to:
+    How connected do you feel, from <b>1 (very bonded)</b> to <b>7 (not bonded at all)</b>, to:
 </p>
     {% formfield player.identification1 %}
 
@@ -28,6 +23,27 @@
     {% formfield player.identification3 %}
 
     {% formfield player.identification4 %}
+
+<p>
+    <br>
+    <br>
+    Please mark for each one of these statements from <b>1 (very true for me)</b> to <b>7 (not true for me)</b>:
+</p>
+    {% formfield player.belief_recipr1 %}
+
+    {% formfield player.belief_recipr2 %}
+
+    {% formfield player.positive_recipr1 %}
+
+    {% formfield player.positive_recipr2 %}
+
+    {% formfield player.positive_recipr3 %}
+
+    {% formfield player.negative_recipr1 %}
+
+    {% formfield player.negative_recipr2 %}
+
+    {% formfield player.negative_recipr3 %}
 
     {% next_button %}
 

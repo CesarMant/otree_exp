@@ -10,26 +10,30 @@
         Suppose that in a group during the first stage:<br>
         A participant contributed 10 points,<br>
         another participant contributed 8 points,<br>
-        another participant contributed 6 points and <br>
+        another participant contributed 5 points and <br>
         another participant contributed 1 point.<br>
         <br>
         Aftwerwards, in the second stage:
-        The participant who contributed 6 points spent one disapproval point.<br>
-        One disapproval point was assigned to the participant who contributed 6 points.<br>
+        The participant who contributed 5 points spent one disapproval point.<br>
+        One disapproval point was assigned to the participant who contributed 5 points.<br>
         <br>
     </p>
     <p>
-        For the participant who contributed 6 points, what would be the payoff <b>before</b> the second stage?<br>
+        For the participant who contributed 5 points, what would be the payoff <b>before</b> the second stage?<br>
     </p>
 
     {% formfield player.question_pg1 with label="His payoff would be" %}
 
     <p>
-        For the participant who contributed 6 points, what would be the payoff <b>after</b> the second stage?<br>
+        For the participant who contributed 5 points, what would be the payoff <b>after</b> the second stage?<br>
     </p>
 
     {% formfield player.question_pg2 with label="His payoff would be" %}
 
+    <p>
+        Please click the blue button <b>"next"</b> once you write your responses.<br>
+        <br>
+    </p>
     {% next_button %}
 
     {% include 'pgfield/Instructions.html' %}

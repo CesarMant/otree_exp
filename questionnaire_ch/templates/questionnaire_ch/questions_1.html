@@ -1,0 +1,50 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %}
+    问卷调查: 第二页/共四页
+{% endblock %}
+
+{% block content %}
+<p>
+    感谢您的参与！现在我们的项目成员正为支付您的报酬做准备，麻烦您在等待的时候回答一些问题。
+    为了保证您的隐私，您可以直接独立作答。当然，如果您觉得我们的工作人员给您念题目的方式会让
+    您更舒服，请告诉我们，我们的项目成员将非常高兴为您读题目。<br>
+    <br>
+
+</p>
+
+<p>
+    从<b>1“联系非常紧密”</b> 到<b>7“完全没联系”</b> ，您如何评价您与下面四类人联系的紧密程度：
+</p>
+    {% formfield player.identification1 %}
+
+    {% formfield player.identification2 %}
+
+    {% formfield player.identification3 %}
+
+    {% formfield player.identification4 %}
+
+<p>
+    <br>
+    <br>
+    从<b>1“完全符合我的情况”</b>到<b>7“完全不符合我的情况”</b>，您如何评价下面几种描述与您真实情况的符合程度：
+</p>
+    {% formfield player.belief_recipr1 %}
+
+    {% formfield player.belief_recipr2 %}
+
+    {% formfield player.positive_recipr1 %}
+
+    {% formfield player.positive_recipr2 %}
+
+    {% formfield player.positive_recipr3 %}
+
+    {% formfield player.negative_recipr1 %}
+
+    {% formfield player.negative_recipr2 %}
+
+    {% formfield player.negative_recipr3 %}
+
+    {% next_button %}
+
+{% endblock %}

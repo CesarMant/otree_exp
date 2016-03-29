@@ -22,13 +22,13 @@ to be implemented in the field. In Chinese.
 class Constants(BaseConstants):
     name_in_url = 'pgfield_ch'
     players_per_group = 4
-    num_rounds = 2
-    question_pg1_correct = c(14)
-    question_pg2_correct = c(10)
+    num_rounds = 3
+    question_pg1_correct = c(17)
+    question_pg2_correct = c(13)
 
     endowment = c(10)
     showupfee = c(40)
-    effic_factor = 1.6 # Efficiency factor for the public goods game
+    effic_factor = 2 # Efficiency factor for the public goods game
     punish_tech = 3    # Efficiency of the punishment technology: 1 spent point reduces the payoff 3 points
 
     # Variables to call ethnicity and religion
@@ -39,12 +39,13 @@ class Constants(BaseConstants):
     religion_none = u'无宗教信仰'    #'None (atheist)'
 
     # Change this parameter according to the session size
-    total_groups = 3 # Assuming 12 subjects to test
+    # total_groups = 3 # Assuming 12 subjects
+    total_groups = 4 # Assuming 16 subjects
     # total_groups = 5 # In the sessions with 20 subject this must be uncommented
 
 
 class Subsession(BaseSubsession):
-    pass
+    #pass
     # This part must be left as comment when the full_game app is running
     # Uncomment only to run the pgfield app
     # def before_session_starts(self):

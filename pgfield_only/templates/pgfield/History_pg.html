@@ -1,0 +1,19 @@
+{% extends "global/GameHistory.html" %}
+
+{% block gamehistory %}
+
+    <!--<big><i>Your history of the game</i></big>-->
+    <table class="table">
+        <tr>
+            <th style="text-align:center">Round</th>
+            <th>Points</th>
+        </tr>
+        {% for p in player.in_previous_rounds %}
+            <tr>
+                <td align="center">{{ p.subsession.round_number }}</td>
+                <td>You earned {{ p.prepayoff }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

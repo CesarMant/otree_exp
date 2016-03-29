@@ -9,25 +9,30 @@
 {% block content %}
 
     <p>
-        您是参与者B。参与者A分配给您 {{group.sent_amount}}个筹码，
-        您得到{{tripled_amount}}个筹码。<br>
+        您是参与者B。<br>
+        参与者A留了{{sent_A}}筹码给自己，给了您{{group.sent_amount}}筹码<br>
+        您得到{{tripled_amount}}筹码。<br>
     </p>
 {% if   subsession.round_number == 2 or subsession.round_number == 4  %}
     <p>
-        参与者A认为自己的民族是 {{player.other_eth}}.<br>
+        参与者A说自己的民族是 {{player.other_eth}}.<br>
     </p>
 {% elif subsession.round_number == 3 or subsession.round_number == 5 %}
     <p>
         {% if player.other_relig != 'None (atheist)'%}
-            参与者A认为自己信仰{{player.other_relig}}。<br>
+            参与者A说自己信仰{{player.other_relig}}。<br>
         {% else %}
-            参与者A认为自己没有宗教信仰。<br>
+            参与者A说自己没有宗教信仰。<br>
         {% endif %}
     </p>
 {% endif %}
 
     {% formfield group.sent_back_amount with label="您决定返还多少筹码？" %}
 
+    <p>
+       一旦您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        <br>
+    </p>
     {% next_button %}
 
     {% include 'trustfield_ch/Instructions_ch.html' %}
