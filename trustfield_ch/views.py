@@ -86,13 +86,7 @@ class ShuffleWaitPage(WaitPage):
             ## Second 25% in the players list (Dai) + Third 25% in the players list (Han)
             receivers = players[Constants.num_senders_per_type:-Constants.num_senders_per_type]
         elif self.subsession.round_number == 3:
-            ## 3. Matching_other_ethnicity1
-            ## Create the same list of receivers as in Matching_same_ethnicity_1.
-            ## Then reverse it to have Dai-Han / Han-Dai matching
-            receivers = players[Constants.num_senders_per_type:-Constants.num_senders_per_type]
-            receivers.reverse()
-        elif self.subsession.round_number == 4:
-            ## 4. Matching_same_ethnicity_2 they are consecutive to pair Dai with Dai and Han with Han
+            ## 3. Matching_same_ethnicity_2 they are consecutive to pair Dai with Dai and Han with Han
             ## Create the list of receivers in two steps: first the Dai and then the Han
             ## Reverse the order of both sublists of receivers to have another Dai-Dai / Han-Han matching
             group1_receivers = players[Constants.num_senders_per_type:2*Constants.num_senders_per_type]
@@ -100,6 +94,12 @@ class ShuffleWaitPage(WaitPage):
             group2_receivers = players[2*Constants.num_senders_per_type:-Constants.num_senders_per_type]
             group2_receivers.reverse()
             receivers = group1_receivers + group2_receivers
+        elif self.subsession.round_number == 4:
+            ## 4. Matching_other_ethnicity1
+            ## Create the same list of receivers as in Matching_same_ethnicity_1.
+            ## Then reverse it to have Dai-Han / Han-Dai matching
+            receivers = players[Constants.num_senders_per_type:-Constants.num_senders_per_type]
+            receivers.reverse()
         elif self.subsession.round_number == 5:
             ## 5. Matching_other_ethnicity2
             ## Create the same list of receivers as in Matching_same_ethnicity_2.
@@ -176,10 +176,10 @@ class Results_ch(Page):
 
 page_sequence = [
     Welcome_ch,
+    ShuffleWaitPage,
     WelcomeTrust_ch,
     Question_trust_ch,
     Feedback_trust_ch,
-    ShuffleWaitPage,
     Send_ch,
     WaitForP1,
     SendBack_ch,

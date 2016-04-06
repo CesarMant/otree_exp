@@ -14,7 +14,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
 else:
-    DEBUG = True
+    #DEBUG = True
+    DEBUG = False
 
 ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = 'otree'
@@ -67,7 +68,7 @@ LANGUAGE_CODE = 'zh-cn'
 #LANGUAGE_CODE = 'en-gb'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = []
+INSTALLED_APPS = ['djsupervisor']
 
 # SENTRY_DSN = ''
 

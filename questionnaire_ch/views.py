@@ -87,7 +87,7 @@ class family(Page):
 
 page_sequence = [
     demographics,
-    #questions_1,
-    #questions_2,
+    questions_1,
+    questions_2,
     family,
 ]

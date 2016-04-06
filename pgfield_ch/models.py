@@ -21,14 +21,21 @@ to be implemented in the field. In Chinese.
 
 class Constants(BaseConstants):
     name_in_url = 'pgfield_ch'
+
+    ### Change this parameter according to the session size ###
+    ### Comment / Uncomment the right one ###
+    total_groups = 3 ## Assuming 12 subjects
+    #total_groups = 4 ## Assuming 16 subjects
+    #total_groups = 5 ## Assuming 20 subjects 
+
     players_per_group = 4
-    num_rounds = 3
+    num_rounds = 5
     question_pg1_correct = c(17)
     question_pg2_correct = c(13)
 
     endowment = c(10)
     showupfee = c(40)
-    effic_factor = 2 # Efficiency factor for the public goods game
+    effic_factor = 2   # Efficiency factor for the public goods game
     punish_tech = 3    # Efficiency of the punishment technology: 1 spent point reduces the payoff 3 points
 
     # Variables to call ethnicity and religion
@@ -37,11 +44,6 @@ class Constants(BaseConstants):
     religion_buddhist = u'佛教'      #'Buddhist'
     religion_christian = u'基督教'   #'Christian'
     religion_none = u'无宗教信仰'    #'None (atheist)'
-
-    # Change this parameter according to the session size
-    # total_groups = 3 # Assuming 12 subjects
-    total_groups = 4 # Assuming 16 subjects
-    # total_groups = 5 # In the sessions with 20 subject this must be uncommented
 
 
 class Subsession(BaseSubsession):

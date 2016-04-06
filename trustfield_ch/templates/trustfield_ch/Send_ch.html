@@ -13,7 +13,7 @@
     </p>
 {% if subsession.round_number == 2 or subsession.round_number == 4  %}
     <p>
-         参与者B说自己的民族是 {{player.other_eth}}。<br>
+         参与者B说自己的民族是 {{player.other_eth}}族。<br>
     </p>
 {% elif subsession.round_number == 3 or subsession.round_number == 5 %}
     <p>
@@ -27,7 +27,7 @@
 
     {% formfield group.sent_amount with label="您决定给参与者B多少筹码？" %}
     <p>
-        一旦您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        如果您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
         <br>
     </p>
     {% next_button %}
