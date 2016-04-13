@@ -22,8 +22,8 @@
     You decide how many of your {{ Constants.endowment }} you would like to allocate in the public fund.<br>
     That is completely of your choice.<br>
     The remaining points will remain in your private fund.<br>
-    We will multiply by {{ Constants.effic_factor }} the points that you allocate in the public fund.<br>
-    The money allocated by other group members to the public fund will be also multiplied by {{ Constants.effic_factor }}.<br>
+    We will double the points that you allocate in the public fund.<br>
+    The money allocated by other group members to the public fund will be also doubled.<br>
     The points in the public fund will be divided equally among the {{ Constants.players_per_group }} group members.<br>
     Every group member gets from the public fund exactly the same number of points, no matter how many they allocate in this fund.<br>
     The number of points you receive at the end depends on your decisions and the decisions of the people in your group.<br>
@@ -40,26 +40,21 @@
     They will be added to the {{ endowment_2|floatformat:0 }} points that you kept in your private fund for a total of {{ payoff_low|floatformat:0 }} points.<br>
 
     <br>
-    <b>Second Stage: Allocation of disapproval points</b><br>
+    <b>Second Stage: Allocation of Disapproval Cards</b><br>
     <br>
     At the beginning of this stage you will see how much each of the other group members contributed to the public fund.<br>
-    <!--At this stage you can also reduce the income of each group member by distributing disapproval points.<br>-->
-    You decide if you allocate disapproval points to the other group members.<br>
-    Each disapproval point a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>
-    Each disapproval point you allocate to others reduces your income in 1 point.<br>
-    The other group members can also allocate to you their disapproval points if the wish to.<br>
+    You decide whether you allocate a Disapproval Card to each group member or not.<br>
+    Each Disapproval Card you allocate will reduce your income in {{ Constants.punish_cost }} points.<br>
+    Each Disapproval Card a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>
+    The other group members can also allocate Disapproval Cards to you if the wish to.<br>
     <br>
-    You must now decide how many points to give to each of the other three group members. You must enter a number for each of them.<br>
-    If you do not want to allocate disapproval points on a specific group member then you must enter zero (0).<br>
-    <!--Each disapproval point a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>-->
-    You can distribute between 0 and {{ Constants.endowment }} points to each group member.
-    The more points you give to any group member, the higher your costs.<br>
-    Your total costs are equal to the sum of the costs of disapproval points assigned to each of the other three group members.<br>
+    For each group member you need to click on "Yes" or "No" for the allocation of the Disapproval Card.<br>
+    The more Disapproval Cards you allocate, the higher your costs.<br>
     <br>
-    For example, let us suppose that you decide to assign 0, 1 and 1 disapproval points to your group members, respectively.<br>
-    In addition, let us suppose that 1 disapproval point was assigned to you.<br>
-    Your payoff will be reduced 5 points in total: 2 points that you spent on disapproval points assigned to the other group members,<br>
-    plus 3 points deducted from 1 disapproval point that was assigned to you.<br>
+    For example, let us suppose that you decide to allocate 2 Disapproval Cards.<br>
+    In addition, let us suppose that 1 Disapproval Card was assigned to you.<br>
+    Your payoff will be reduced 9 points in total: 4 points that you spent on allocating Disapproval Cards to 2 other group members,<br>
+    plus 5 points deducted from 1 Disapproval Card that was assigned to you.<br>
     <br>
     </p>
 

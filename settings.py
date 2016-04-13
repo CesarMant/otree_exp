@@ -14,8 +14,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
 else:
-    #DEBUG = True
-    DEBUG = False
+    DEBUG = True
+    #DEBUG = False
 
 ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = 'otree'
@@ -68,7 +68,8 @@ LANGUAGE_CODE = 'zh-cn'
 #LANGUAGE_CODE = 'en-gb'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['djsupervisor']
+#INSTALLED_APPS = ['djsupervisor']
+INSTALLED_APPS = []
 
 # SENTRY_DSN = ''
 
@@ -134,13 +135,13 @@ SESSION_CONFIGS = [
         'name': 'pgfield_only',
         'display_name': "Public Goods Game with Punishment (four players/no matching)",
         'num_demo_participants': 4,
-        'app_sequence': ['pgfield_only'],
+        'app_sequence': ['pgfield'],
     },
     {
         'name': 'pgfield_only_ch',
         'display_name': "Public Goods Game with Punishment (in Chinese)",
         'num_demo_participants': 12,
-        'app_sequence': ['pgfield_only_ch'],
+        'app_sequence': ['pgfield_ch'],
     },
         {
         'name': 'trustfield',
@@ -179,18 +180,6 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['questionnaire_ch'],
     },
-            {
-        'name': 'trust_2p',
-        'display_name': "Trust Game (two players/no matching)",
-        'num_demo_participants': 4,
-        'app_sequence': ['trustfield'],
-    },
-            {
-        'name': 'final_results',
-        'display_name': "Final payoff",
-        'num_demo_participants': 1,
-        'app_sequence': ['final_results'],
-    }
 ]    
 
 

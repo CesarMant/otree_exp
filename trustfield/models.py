@@ -24,6 +24,12 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 5
 
+    ### Change this parameter according to the session size ###
+    ### Comment / Uncomment the right one ###
+    num_senders_per_type = 3 ## Assuming 12 subjects
+    #num_senders_per_type = 4 ## Assuming 16 subjects
+    #num_senders_per_type = 5 ## Assuming 20 subjects
+
     # Game parameters
     endowment = c(50)
     showupfee = c(40)
@@ -39,10 +45,6 @@ class Constants(BaseConstants):
     # Responses to the understanding questions
     question_trustA_correct = c(70)
     question_trustB_correct = c(40)
-
-    # Variable for the matching
-    # num_senders_per_type = (number of players in the session)/4
-    num_senders_per_type = 4
 
 
 class Subsession(BaseSubsession):

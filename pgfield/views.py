@@ -78,7 +78,7 @@ class Contribute(Page):
     def vars_for_template(self):
         self.player.ethnicity = self.player.get_ethnicity()
         return{
-            'ethnicity' : self.player.ethnicity
+            'ethnicity': self.player.ethnicity
         }
 
 
@@ -148,11 +148,12 @@ class Results(Page):
         for p in self.group.get_players(): # Function to compute total expenditure in punishing others
             p.punish_exp = p.punish_p1 + p.punish_p2 + p.punish_p3 + p.punish_p4
         return {
-        'punish_exp': self.player.punish_exp,
-        'eff_punish_p1' : Constants.punish_tech * self.group.total_punish_p1, # Values of total punishment for each player
-        'eff_punish_p2' : Constants.punish_tech * self.group.total_punish_p2,
-        'eff_punish_p3' : Constants.punish_tech * self.group.total_punish_p3,
-        'eff_punish_p4' : Constants.punish_tech * self.group.total_punish_p4,
+        'punish_cards': self.player.punish_exp, # Amount spent punishing others
+        'punish_exp': c(Constants.punish_cost * self.player.punish_exp), # Amount spent punishing others
+        'eff_punish_p1' : c(Constants.punish_tech * self.group.total_punish_p1), # Values of total punishment for each player
+        'eff_punish_p2' : c(Constants.punish_tech * self.group.total_punish_p2),
+        'eff_punish_p3' : c(Constants.punish_tech * self.group.total_punish_p3),
+        'eff_punish_p4' : c(Constants.punish_tech * self.group.total_punish_p4),
     }
 
 
@@ -184,7 +185,7 @@ page_sequence = [
     WelcomePublicGoods,
     Question_pg,
     Feedback_pg,
-    ShuffleWaitPage,
+    #ShuffleWaitPage,
     Contribute,
     ResultsWaitPage,
     Punishment1,

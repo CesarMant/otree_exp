@@ -9,56 +9,53 @@
 
     {% if player.question_pg1 == Constants.question_pg1_correct %}
     <p class="text-success">
-    Your answer {{player.question_pg1}} for the payoff <b>before</b> the second stage was correct.
+    Your answer {{player.question_pg1}} for your payoff <b>before</b> the second stage was correct.
     </p>
     {% else %}
     <p class="text-danger">
-    Your answer {{player.question_pg1}} for the payoff <b>before</b> the second stage was incorrect.
+    Your answer {{player.question_pg1}} for your payoff <b>before</b> the second stage was incorrect.
     </p>
     {% endif %}
         {% if player.question_pg2 == Constants.question_pg2_correct %}
     <p class="text-success">
-    Your answer {{player.question_pg2}} for the payoff <b>after</b> the second stage was correct.
+    Your answer {{player.question_pg2}} for your payoff <b>after</b> the second stage was correct.
     </p>
     {% else %}
     <p class="text-danger">
-    Your answer {{player.question_pg2}} for the payoff <b>after</b> the second stage was incorrect.
+    Your answer {{player.question_pg2}} for your payoff <b>after</b> the second stage was incorrect.
     </p>
     {% endif %}
 
     <p>
-        Suppose in a group during the first stage:<br>
-        A participant contributed 10 points,<br>
-        another participant contributed 8 points,<br>
-        another participant contributed 5 points and <br>
-        another participant contributed 1 point.<br>
+        Suppose that during the <b>first stage:</b><br>
+        You contributed 5 points.<br>
+        The other three participants contributed 10, 8 and 1 points, respectively.<br>
         <br>
-        Aftwerwards, in the second stage:
-        The participant who contributed 5 points spent one disapproval point.<br>
-        One disapproval point is assigned to the participant who contributed 5 points.<br>
+        Aftwerwards, during the <b>second stage:</b>
+        You allocate 1 Disapproval Card.<br>
+        One Disapproval Card is assigned to you.<br>
         <br>
     </p>
-        What would be the payoff of the participant who contributed 5 points before and after the second stage?<br>
+        What would be your payoff <b>before</b> and <b>after</b> the second stage?<br>
     </p>
 
     <p>
-        <strong>Solution: 14 points <b>before</b> the second stage and 10 points <b>after</b> the second stage</strong>
+        <strong>Solution: 17 points <b>before</b> the second stage and 10 points <b>after</b> the second stage</strong>
     </p>
 
     <p>
         <strong>Explanation:</strong><br>
         Total contribution from all participants was 10+8+5+1=24. Total earnings from the project were 24 x 2 = 48.<br>
         Each participant got an equal share of the earnings, that is, 48/4=12. <br>
-        Hence, the payoff for the participant who contributed 5 points <b>before the second stage</b> was 10-5+12=17.<br>
+        Hence, your payoff <b>before the second stage</b> was 10-5+12=17.<br>
         <br>
-        The participant who contributed 5 points spent one of his points assigning a disapproval point to another participant.<br>
-        One point is deducted from his payoff.<br>
-        One disapproval point was assigned to the participant who contributed 5 points.<br>
-        Three additional points are deducted from his payoff.<br>
-        Hence, the payoff for the participant who contributed 5 points <b>after the second stage</b> was 17-1-3=13.<br>
+        You allocated one Disapproval Card. It decreased your payoff by 2 points.<br>
+        One Disapproval Card was allocated to you. It decreased your payoff by 5 points.<br>
+        Hence, your payoff <b>after the second stage</b> was 17-2-5=10.<br>
     </p>
 
     <p>
+        <br>
         Please click the blue button <b>"next"</b> once the monitor indicates you to do so.<br>
         <br>
     </p>

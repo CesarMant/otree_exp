@@ -23,12 +23,13 @@ class Constants(BaseConstants):
     players_per_group = 4
     num_rounds = 5
     question_pg1_correct = c(17)
-    question_pg2_correct = c(13)
+    question_pg2_correct = c(10)
 
     endowment = c(10)
     showupfee = c(40)
-    effic_factor = 2 # Efficiency factor for the public goods game
-    punish_tech = 3    # Efficiency of the punishment technology: 1 spent point reduces the payoff 3 points
+    effic_factor = 2   # Efficiency factor for the public goods game
+    punish_tech = 5    # Damage dealt by the Punishment Card: reduction of 5 points to the recipient
+    punish_cost = 2    # Cost of allocating a Punishment Card: reduction of 2 points to the sender
 
     # Variables to call ethnicity and religion
     religion_buddhist = 'Buddhist'
@@ -43,14 +44,13 @@ class Constants(BaseConstants):
     #total_groups = 5 # In the sessions with 20 subject this must be uncommented
 
 class Subsession(BaseSubsession):
-    #pass
     # This part must be left as comment when the full_game app is running
     # Uncomment only to run the pgfield app
-    # def before_session_starts(self):
-    #     if self.round_number == 1:
-    #         for p in self.get_players():
-    #             p.participant.vars['ethnic'] = random.choice(['Dai','Han'])
-    #             p.participant.vars['religion'] = random.choice(['Buddhist','Christian'])
+    def before_session_starts(self):
+        if self.round_number == 1:
+            for p in self.get_players():
+                p.participant.vars['ethnic'] = random.choice(['Dai','Han'])
+                p.participant.vars['religion'] = random.choice(['Buddhist','Christian'])
 
     def get_ethnicity_dai(self):
         return [
@@ -83,10 +83,10 @@ class Group(BaseGroup):
     individual_share = models.CurrencyField()
 
     # Total punishment points allocated to each player are stored as a group level variable
-    total_punish_p1 = models.CurrencyField()
-    total_punish_p2 = models.CurrencyField()
-    total_punish_p3 = models.CurrencyField()
-    total_punish_p4 = models.CurrencyField()
+    total_punish_p1 = models.PositiveIntegerField()
+    total_punish_p2 = models.PositiveIntegerField()
+    total_punish_p3 = models.PositiveIntegerField()
+    total_punish_p4 = models.PositiveIntegerField()
 
     # Function to compute the payoffs after the contribution to the public goods game
     def set_payoffs_s1(self):
@@ -110,10 +110,10 @@ class Group(BaseGroup):
 
         # Update the payoff after deducting allocated and received punishment points
         # Payments of each round are stored as "prepayoff"
-        p1.prepayoff = p1.payoff_s1 - self.total_punish_p1 * Constants.punish_tech - (p1.punish_p2 + p1.punish_p3 + p1.punish_p4)
-        p2.prepayoff = p2.payoff_s1 - self.total_punish_p2 * Constants.punish_tech - (p2.punish_p1 + p2.punish_p3 + p2.punish_p4)
-        p3.prepayoff = p3.payoff_s1 - self.total_punish_p3 * Constants.punish_tech - (p3.punish_p1 + p3.punish_p2 + p3.punish_p4)
-        p4.prepayoff = p4.payoff_s1 - self.total_punish_p4 * Constants.punish_tech - (p4.punish_p1 + p4.punish_p2 + p4.punish_p3)
+        p1.prepayoff = p1.payoff_s1 - self.total_punish_p1 * Constants.punish_tech - Constants.punish_cost * (p1.punish_p2 + p1.punish_p3 + p1.punish_p4)
+        p2.prepayoff = p2.payoff_s1 - self.total_punish_p2 * Constants.punish_tech - Constants.punish_cost * (p2.punish_p1 + p2.punish_p3 + p2.punish_p4)
+        p3.prepayoff = p3.payoff_s1 - self.total_punish_p3 * Constants.punish_tech - Constants.punish_cost * (p3.punish_p1 + p3.punish_p2 + p3.punish_p4)
+        p4.prepayoff = p4.payoff_s1 - self.total_punish_p4 * Constants.punish_tech - Constants.punish_cost * (p4.punish_p1 + p4.punish_p2 + p4.punish_p3)
 
 class Player(BasePlayer):
     contribution = models.CurrencyField(choices=currency_range(0, Constants.endowment, 1),)
@@ -126,10 +126,22 @@ class Player(BasePlayer):
     payoff_block2 = models.CurrencyField()
 
     # Allocation of punishment points to each subject
-    punish_p1 = models.CurrencyField(min=0, max=Constants.endowment, null=True)
-    punish_p2 = models.CurrencyField(min=0, max=Constants.endowment, null=True)
-    punish_p3 = models.CurrencyField(min=0, max=Constants.endowment, null=True)
-    punish_p4 = models.CurrencyField(min=0, max=Constants.endowment, null=True)
+    punish_p1 = models.PositiveIntegerField(min=0, max=1, null=True,
+                                     choices=[(0, 'No'),
+                                              (1, 'Yes')],
+                                     widget=widgets.RadioSelectHorizontal())
+    punish_p2 = models.PositiveIntegerField(min=0, max=1, null=True,
+                                     choices=[(0, 'No'),
+                                              (1, 'Yes')],
+                                     widget=widgets.RadioSelectHorizontal())
+    punish_p3 = models.PositiveIntegerField(min=0, max=1, null=True,
+                                     choices=[(0, 'No'),
+                                              (1, 'Yes')],
+                                     widget=widgets.RadioSelectHorizontal())
+    punish_p4 = models.PositiveIntegerField(min=0, max=1, null=True,
+                                     choices=[(0, 'No'),
+                                              (1, 'Yes')],
+                                     widget=widgets.RadioSelectHorizontal())
 
     # Variables to store the responses to the understanding questions
     question_pg1 = models.CurrencyField()

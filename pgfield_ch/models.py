@@ -47,7 +47,6 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    #pass
     # This part must be left as comment when the full_game app is running
     # Uncomment only to run the pgfield app
     # def before_session_starts(self):

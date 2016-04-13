@@ -7,30 +7,29 @@
 
 {% block content %}
     <p>
-        Suppose that in a group during the first stage:<br>
-        A participant contributed 10 points,<br>
-        another participant contributed 8 points,<br>
-        another participant contributed 5 points and <br>
-        another participant contributed 1 point.<br>
+        Suppose that during the <b>first stage:</b><br>
+        You contributed 5 points.<br>
+        The other three participants contributed 10, 8 and 1 points, respectively.<br>
         <br>
-        Aftwerwards, in the second stage:
-        The participant who contributed 5 points spent one disapproval point.<br>
-        One disapproval point was assigned to the participant who contributed 5 points.<br>
+        Aftwerwards, during the <b>second stage:</b>
+        You allocate 1 Disapproval Card.<br>
+        One Disapproval Card is assigned to you.<br>
         <br>
     </p>
     <p>
-        For the participant who contributed 5 points, what would be the payoff <b>before</b> the second stage?<br>
+        What would be your payoff <b>before</b> the second stage?<br>
     </p>
 
-    {% formfield player.question_pg1 with label="His payoff would be" %}
+    {% formfield player.question_pg1 with label="My payoff would be" %}
 
     <p>
-        For the participant who contributed 5 points, what would be the payoff <b>after</b> the second stage?<br>
+        What would be your payoff <b>after</b> the second stage?<br>
     </p>
 
-    {% formfield player.question_pg2 with label="His payoff would be" %}
+    {% formfield player.question_pg2 with label="My payoff would be" %}
 
     <p>
+        <br>
         Please click the blue button <b>"next"</b> once you write your responses.<br>
         <br>
     </p>
