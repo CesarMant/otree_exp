@@ -26,14 +26,14 @@ class Constants(BaseConstants):
 
     ### Change this parameter according to the session size ###
     ### Comment / Uncomment the right one ###
-    num_senders_per_type = 3 ## Assuming 12 subjects
-    #num_senders_per_type = 4 ## Assuming 16 subjects
-    #num_senders_per_type = 5 ## Assuming 20 subjects
+    num_senders_per_type = 3  ## Assuming 12 subjects
+    #num_senders_per_type = 4  ## Assuming 16 subjects
+    #num_senders_per_type = 5  ## Assuming 20 subjects
 
     # Game parameters
     endowment = c(50)
     showupfee = c(40)
-    mult_factor = 3 # Efficiency factor in the transfer on the trust game
+    mult_factor = 3  # Efficiency factor in the transfer on the trust game
 
     # Variables to display ethnicity and religion options
     ethnicity_dai = 'Dai'
@@ -48,10 +48,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self): # Select the payment round from the beginning
+    def before_session_starts(self):  # Select the payment round from the beginning
         if self.round_number == 1:
             paying_round = random.randint(1, Constants.num_rounds)
-            self.session.vars['paying_round'] = paying_round # Store the payment round
+            self.session.vars['paying_round'] = paying_round  # Store the payment round
 
     def get_ethnicity_dai(self):
         return [
@@ -90,11 +90,12 @@ class Group(BaseGroup):
         doc="""Amount sent back by P2""",
         )
 
-    def set_payoffs_s1(self): # Compute payoffs for both players in the trust game
+    def set_payoffs_s1(self):  # Compute payoffs for both players in the trust game
         p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
         p1.prepayoff = Constants.endowment - self.sent_amount + self.sent_back_amount
         p2.prepayoff = self.sent_amount * Constants.mult_factor - self.sent_back_amount
+
 
 class Player(BasePlayer):
 
@@ -134,4 +135,10 @@ class Player(BasePlayer):
     # Variables to store the responses to the understanding questions
     question_trustA = models.CurrencyField()
     question_trustB = models.CurrencyField()
+
+    # Variable to store the agreement to participate
+    consent = models.CharField(initial=None,
+                              choices=[('Yes', 'Yes'),
+                                       ('No', 'No')],
+                              widget=widgets.RadioSelectHorizontal())
 

@@ -48,10 +48,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self): # Select the payment round from the beginning
+    def before_session_starts(self):  # Select the payment round from the beginning
         if self.round_number == 1:
             paying_round = random.randint(1, Constants.num_rounds)
-            self.session.vars['paying_round'] = paying_round # Store the payment round
+            self.session.vars['paying_round'] = paying_round  # Store the payment round
 
     def get_ethnicity_dai(self):
         return [
@@ -96,6 +96,7 @@ class Group(BaseGroup):
         p1.prepayoff = Constants.endowment - self.sent_amount + self.sent_back_amount
         p2.prepayoff = self.sent_amount * Constants.mult_factor - self.sent_back_amount
 
+
 class Player(BasePlayer):
 
     ethnic = models.CharField()     # Variable to store the participants' ethnicity
@@ -137,3 +138,9 @@ class Player(BasePlayer):
     question_trustA = models.CurrencyField()
     question_trustB = models.CurrencyField()
 
+    # Variable to store the agreement to participate
+    consent = models.CharField(initial=None,
+                              choices=[('Yes', 'Yes'),
+                                       ('No', 'No')],
+                              verbose_name='I agree to participate: ',
+                              widget=widgets.RadioSelectHorizontal())

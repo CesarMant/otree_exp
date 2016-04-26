@@ -27,49 +27,22 @@ class Welcome(Page):
             }
 
 
-class WelcomeTrust(Page):
-
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-
-    form_model = models.Group
-    
-    def vars_for_template(self):
-        return {
-            'endowment_2': Constants.endowment * 0.5,
-            'endowment_2x3': Constants.endowment * 1.5
-            }
-
-class Question_trust(Page):
-
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-
-    form_model = models.Player
-    # Fields to store the responses to understanding questions
-    form_fields = ['question_trustA','question_trustB']
-
-class Feedback_trust(Page):
-
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-
-# In the Send and SendBack pages the information shown in each round about the other player is different
-# Round 1: No information
-# Round 2: Ethnicity
-# Round 3: Religion
-# Round 4: Ethnicity
-# Round 5: Religion
-# The corresponding code is directly located in the Send.html and SendBack.html files
-
 class ShuffleWaitPage(WaitPage):
     wait_for_all_groups = True
 
     def after_all_players_arrive(self):
 
-        dai_players = self.subsession.get_ethnicity_dai() # Get list of Dai
-        han_players = self.subsession.get_ethnicity_han() # Get list of Han
-        players = dai_players + han_players               # Combine the two lists
+        # In the Send and SendBack pages the information shown in each round about the other player is different
+        # Round 1: No information
+        # Round 2: Ethnicity
+        # Round 3: Religion
+        # Round 4: Ethnicity
+        # Round 5: Religion
+        # The corresponding code is directly located in the Send.html and SendBack.html files
+
+        dai_players = self.subsession.get_ethnicity_dai()  # Get list of Dai
+        han_players = self.subsession.get_ethnicity_han()  # Get list of Han
+        players = dai_players + han_players                # Combine the two lists
         # Define the list of senders: fixed in every shuffling
         # First 25% in the players list (Dai) + Last 25% in the players list (Han)
         senders = players[0:Constants.num_senders_per_type] + players[-Constants.num_senders_per_type:]
@@ -117,6 +90,45 @@ class ShuffleWaitPage(WaitPage):
             group.set_players([sender, receiver])
 
 
+class WelcomeTrust(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+    form_model = models.Group
+    
+    def vars_for_template(self):
+        return {
+            'endowment_2': Constants.endowment * 0.5,
+            'endowment_2x3': Constants.endowment * 1.5
+            }
+
+
+class Question_trust(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+    form_model = models.Player
+    # Fields to store the responses to understanding questions
+    form_fields = ['question_trustA','question_trustB']
+
+
+class Feedback_trust(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Consent_form(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+    form_model = models.Player
+    form_fields = ['consent']
+
+
 class Send(Page):
 
     form_model = models.Group
@@ -125,8 +137,10 @@ class Send(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
+
 class WaitForP1(WaitPage):
     pass
+
 
 class SendBack(Page):
 
@@ -148,6 +162,7 @@ class SendBack(Page):
             self.group.sent_amount * Constants.mult_factor,
             c(5)
             )
+
 
 class ResultsWaitPage(WaitPage):
 
@@ -176,10 +191,11 @@ class Results(Page):
 
 page_sequence = [
     Welcome,
+    # ShuffleWaitPage,
     WelcomeTrust,
     Question_trust,
     Feedback_trust,
-    #ShuffleWaitPage,
+    Consent_form,
     Send,
     WaitForP1,
     SendBack,

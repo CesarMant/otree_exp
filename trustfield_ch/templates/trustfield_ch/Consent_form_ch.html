@@ -1,0 +1,35 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Consent Form
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    If you have questions please let us know. We will address your query in private.<br>
+    We would like to proceed with asking you if you agree on participating in this activity.<br>
+    For your participation in the study, you will receive some earnings as described in the instructions.<br>
+    The earnings are paid at the end of the experiment.<br>
+    <br>
+    Your data will be kept completely confidential by the researcher.<br>
+    Your personal information will not be stored with the data.<br>
+    <br>
+    Your participation in this study is purely voluntary, and you may withdraw your participation
+    or your data at any time during the experiment, before or after any question, without any penalty to you.<br>
+    In that case you will still receive your participation fee of 40 Yuan, but you will not receive additional money.<br>
+    <br>
+    If you agree to participate please click <b>"Yes"</b> in the statement shown below. Otherwise click <b>"No"</b>.<br>
+    </p>
+
+    {% formfield player.consent %}
+
+    <p>
+        Please click the blue button <b>"next"</b> once the monitor indicates you to do so.<br>
+        <br>
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

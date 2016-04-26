@@ -146,7 +146,7 @@ SESSION_CONFIGS = [
         {
         'name': 'trustfield',
         'display_name': "Trust Game",
-        'num_demo_participants': 12,
+        'num_demo_participants': 4,
         'app_sequence': ['trustfield'],
     },
             {

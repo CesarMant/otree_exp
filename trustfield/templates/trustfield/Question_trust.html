@@ -6,15 +6,32 @@
 {% endblock %}
 
 {% block content %}
+
+{% if player.id_in_group == 1 %}
+
     <p>
-        Suppose that participant A sent 30 points to participant B.<br>
-        Having received the tripled amount (90 points), participant B sent 50 points to participant A.<br>
-        In the end, how many points would participant A and B have?<br>
+        Suppose that you sent 30 points to person B.<br>
+        Having received the tripled amount (90 points), person B sent 50 points back to you.<br>
+        In the end, how many points would you and person B have?<br>
     </p>
 
-    {% formfield player.question_trustA with label="Participant A would have" %}
+    {% formfield player.question_trustA with label="I would have" %}
 
-    {% formfield player.question_trustB with label="Participant B would have" %}
+    {% formfield player.question_trustB with label="Person B would have" %}
+
+{% else %}
+
+    <p>
+        Suppose that person A sent 30 points to you.<br>
+        Having received the tripled amount (90 points), you sent 50 points back to person A.<br>
+        In the end, how many points would you and person A have?<br>
+    </p>
+
+    {% formfield player.question_trustA with label="Person A would have" %}
+
+    {% formfield player.question_trustB with label="I would have" %}
+
+{% endif %}
 
     <p>
         Please click the blue button <b>"next"</b> once you write your responses.<br>

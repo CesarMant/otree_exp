@@ -7,40 +7,82 @@
 
 {% block content %}
 
+{% if player.id_in_group == 1 %}
+
     {% if player.question_trustA == Constants.question_trustA_correct %}
     <p class="text-success">
-    Your answer {{player.question_trustA}} for participant A was correct.
+    Your answer {{player.question_trustA}} with your final points was correct.
     </p>
     {% else %}
     <p class="text-danger">
-    Your answer {{player.question_trustA}} for participant A was incorrect.
+    Your answer {{player.question_trustA}} with your final points was incorrect.
     </p>
     {% endif %}
     {% if player.question_trustB == Constants.question_trustB_correct %}
     <p class="text-success">
-    Your answer {{player.question_trustB}} for participant B was correct.
+    Your answer {{player.question_trustB}} with person's B final points was correct.
     </p>
     {% else %}
     <p class="text-danger">
-    Your answer {{player.question_trustB}} for participant B was incorrect.
+    Your answer {{player.question_trustB}} with person's B final points was incorrect.
+    </p>
+
+    {% endif %}
+
+    <p>
+        Suppose that you sent 30 points to person B.<br>
+        Having received the tripled amount (90 points), person B sent 50 points back to you.<br>
+        In the end, how many points would you and person B have?<br>
+    </p>
+
+    <p>
+        <strong>Solution: You would have 70 points and person B would have 40 points.</strong>
+    </p>
+
+    <p>
+        <strong>Explanation:</strong> You sent 30 points to person B. It was tripled thus person B received 30*3=90 points.<br>
+        Then person B sent 50 points back to you. You received exactly 50 points.<br>
+        Hence at last you would have 50-30+50=70 points, and person B would have 90-50=40 points.<br>
+    </p>
+
+{% else %}
+
+    {% if player.question_trustA == Constants.question_trustA_correct %}
+    <p class="text-success">
+    Your answer {{player.question_trustA}} with person's A final points was correct.
+    </p>
+    {% else %}
+    <p class="text-danger">
+    Your answer {{player.question_trustA}} with person's A final points was incorrect.
+    </p>
+    {% endif %}
+    {% if player.question_trustB == Constants.question_trustB_correct %}
+    <p class="text-success">
+    Your answer {{player.question_trustB}} with your final points was correct.
+    </p>
+    {% else %}
+    <p class="text-danger">
+    Your answer {{player.question_trustB}} with your final points was incorrect.
     </p>
     {% endif %}
 
     <p>
-        Suppose that participant A sent 30 points to participant B.<br>
-        Having received the tripled amount, participant B sent 50 points to participant A.<br>
-        In the end, how many points would participant A and B have?<br>
+        Suppose that person A sent 30 points to you.<br>
+        Having received the tripled amount (90 points), you sent 50 points back to person A.<br>
+        In the end, how many points would you and person A have?<br>
     </p>
 
     <p>
-        <strong>Solution: Participant A would have 70 points and Participant B would have 40 points.</strong>
+        <strong>Solution: Person A would have 70 points and you would have 40 points.</strong>
     </p>
 
     <p>
-        <strong>Explanation:</strong> Participant A first sent 30 points to B. It was tripled thus B received 30*3=90 points.<br>
-        Then participant B sent 50 points to A. Participant A received exactly 50 points.<br>
-        Hence at last participant A would have 50-30+50=70 points, and participant B would have 90-50=40 points.<br>
+        <strong>Explanation:</strong> Person A first sent you 30 points. It was tripled thus you received 30*3=90 points.<br>
+        Then you sent 50 points back to person A. Person A received exactly 50 points.<br>
+        Hence at last person A would have 50-30+50=70 points, and you would have 90-50=40 points.<br>
     </p>
+
+{% endif %}
 
     <p>
         Please click the blue button <b>"next"</b> once the monitor indicates you to do so.<br>
