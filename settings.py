@@ -146,7 +146,7 @@ SESSION_CONFIGS = [
         {
         'name': 'trustfield',
         'display_name': "Trust Game",
-        'num_demo_participants': 4,
+        'num_demo_participants': 12,
         'app_sequence': ['trustfield'],
     },
             {
@@ -158,13 +158,13 @@ SESSION_CONFIGS = [
         {
         'name': 'full_game',
         'display_name': "Full game: Trust Game + Public Goods Game",
-        'num_demo_participants': 20,
+        'num_demo_participants': 12,
         'app_sequence': ['trustfield','pgfield','questionnaire','final_results'],
     },
             {
         'name': 'full_game_ch',
         'display_name': "Full game: Trust Game + Public Goods Game (in Chinese)",
-        'num_demo_participants': 16,
+        'num_demo_participants': 12,
         'app_sequence': ['trustfield_ch','pgfield_ch','questionnaire_ch','final_results_ch'],
     },
             {

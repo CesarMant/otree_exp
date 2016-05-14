@@ -36,7 +36,7 @@ class Question_pg(Page):
         return self.subsession.round_number == 1
 
     form_model = models.Player
-    form_fields = ['question_pg1','question_pg2']
+    form_fields = ['question_pg1', 'question_pg2']
 
 class Feedback_pg(Page):
 
@@ -70,6 +70,7 @@ class ShuffleWaitPage(WaitPage):
 
 # The ethnicity information of each player will be displayed twice:
 # In the contribution stage and in the punishment stage
+
 class Contribute(Page):
 
     form_model = models.Player
@@ -185,7 +186,7 @@ page_sequence = [
     WelcomePublicGoods,
     Question_pg,
     Feedback_pg,
-    #ShuffleWaitPage,
+    ShuffleWaitPage,
     Contribute,
     ResultsWaitPage,
     Punishment1,

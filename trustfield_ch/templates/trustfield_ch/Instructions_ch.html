@@ -1,6 +1,9 @@
 {% extends "global/Instructions_ch.html" %}
+{% load staticfiles %}
 
 {% block instructions %}
+
+<img src="{% static "trustfield_ch/instructions_trust_ch.png" %}" width="800"/>
 
 {% if player.id_in_group == 1 %}
 <p>

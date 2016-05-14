@@ -2,31 +2,29 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Consent Form
+    同意书
 {% endblock %}
 
 {% block content %}
 
     <p>
-    If you have questions please let us know. We will address your query in private.<br>
-    We would like to proceed with asking you if you agree on participating in this activity.<br>
-    For your participation in the study, you will receive some earnings as described in the instructions.<br>
-    The earnings are paid at the end of the experiment.<br>
+    如果您有任何问题，请举手示意。我们的工作人员会为您个别解答。 <br>
+    我们想再问您是不是愿意参加这次活动。<br>
+    为了感谢您的参与，在活动的最后我们将给您现金，金额完全按游戏说明中写的方式来计算。 <br>
     <br>
-    Your data will be kept completely confidential by the researcher.<br>
-    Your personal information will not be stored with the data.<br>
+    我们保证对于您提供的数据，研究人员将完全保密。<br>
+    您的个人信息和您的游戏记录会分开保存。<br>
     <br>
-    Your participation in this study is purely voluntary, and you may withdraw your participation
-    or your data at any time during the experiment, before or after any question, without any penalty to you.<br>
-    In that case you will still receive your participation fee of 40 Yuan, but you will not receive additional money.<br>
+    在这次活动中，您的参与是完全自愿的，在实验过程中您可以在任何时候无条件退出活动或者收回您提供的数据，不会有任何惩罚。<br>
+    但是除了40元人民币的参与费，您不会得到任何额外报酬。<br>
     <br>
-    If you agree to participate please click <b>"Yes"</b> in the statement shown below. Otherwise click <b>"No"</b>.<br>
+    如果您同意参加本次活动，请点击下面的<b>"同意"</b>。否则，点击<b>"不同意"</b>。<br>
     </p>
 
-    {% formfield player.consent %}
+    {% formfield player.consent with label="我同意参加" %}
 
     <p>
-        Please click the blue button <b>"next"</b> once the monitor indicates you to do so.<br>
+        请耐心等待，等听到工作人员的指示后，再点击<b>“下一步”</b>蓝色按钮。<br>
         <br>
     </p>
 

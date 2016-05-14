@@ -13,7 +13,7 @@ class Welcome(Page):
         return self.subsession.round_number == 1
     
     form_model = models.Player
-    form_fields = ['ethnic_in','religion_in']
+    form_fields = ['ethnic_in', 'religion_in']
 
     # Function defined to store the participant's ethnicity and religion in the dictionary
     # By storing the variable as self.player.participant.vars['name'] it can be accessed in other sessions
@@ -34,10 +34,10 @@ class ShuffleWaitPage(WaitPage):
 
         # In the Send and SendBack pages the information shown in each round about the other player is different
         # Round 1: No information
-        # Round 2: Ethnicity
-        # Round 3: Religion
-        # Round 4: Ethnicity
-        # Round 5: Religion
+        # Round 2: (same) Ethnicity
+        # Round 3: (same) Religion
+        # Round 4: (other) Ethnicity
+        # Round 5: (other) Religion
         # The corresponding code is directly located in the Send.html and SendBack.html files
 
         dai_players = self.subsession.get_ethnicity_dai()  # Get list of Dai
@@ -47,18 +47,23 @@ class ShuffleWaitPage(WaitPage):
         # First 25% in the players list (Dai) + Last 25% in the players list (Han)
         senders = players[0:Constants.num_senders_per_type] + players[-Constants.num_senders_per_type:]
 
+        # Randomization of matching type per round (order effects):
+        # When a=0 in round 2 and 3 the matching is with those of the same Ethnicity/Religion
+        # When a=2 in round 2 and 3 the matching is with those of the other Ethnicity/Religion
+        alter_round = self.session.vars['alter_round']
+
         if self.subsession.round_number == 1:
             ## 1. Random matching - only for receivers (senders are fixed)
             ## Create the same list of receivers as in Matching_same_ethnicity_1.
             ## Then shuffle it randomly
             receivers = players[Constants.num_senders_per_type:-Constants.num_senders_per_type]
             random.shuffle(receivers)   # Matching: random
-        elif self.subsession.round_number == 2:
+        elif self.subsession.round_number == 2+alter_round:
             ## 2. Matching_same_ethnicity_1 they are consecutive to pair Dai with Dai and Han with Han
             ## Define the list of receivers
             ## Second 25% in the players list (Dai) + Third 25% in the players list (Han)
             receivers = players[Constants.num_senders_per_type:-Constants.num_senders_per_type]
-        elif self.subsession.round_number == 3:
+        elif self.subsession.round_number == 3+alter_round:
             ## 3. Matching_same_ethnicity_2 they are consecutive to pair Dai with Dai and Han with Han
             ## Create the list of receivers in two steps: first the Dai and then the Han
             ## Reverse the order of both sublists of receivers to have another Dai-Dai / Han-Han matching
@@ -67,13 +72,13 @@ class ShuffleWaitPage(WaitPage):
             group2_receivers = players[2*Constants.num_senders_per_type:-Constants.num_senders_per_type]
             group2_receivers.reverse()
             receivers = group1_receivers + group2_receivers
-        elif self.subsession.round_number == 4:
+        elif self.subsession.round_number == 4-alter_round:
             ## 4. Matching_other_ethnicity1
             ## Create the same list of receivers as in Matching_same_ethnicity_1.
             ## Then reverse it to have Dai-Han / Han-Dai matching
             receivers = players[Constants.num_senders_per_type:-Constants.num_senders_per_type]
             receivers.reverse()
-        elif self.subsession.round_number == 5:
+        elif self.subsession.round_number == 5-alter_round:
             ## 5. Matching_other_ethnicity2
             ## Create the same list of receivers as in Matching_same_ethnicity_2.
             ## Then reverse it to have Dai-Han / Han-Dai matching
@@ -191,7 +196,7 @@ class Results(Page):
 
 page_sequence = [
     Welcome,
-    # ShuffleWaitPage,
+    ShuffleWaitPage,
     WelcomeTrust,
     Question_trust,
     Feedback_trust,

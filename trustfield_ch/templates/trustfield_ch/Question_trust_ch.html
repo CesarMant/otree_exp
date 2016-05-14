@@ -6,18 +6,37 @@
 {% endblock %}
 
 {% block content %}
+
+{% if player.id_in_group == 1 %}
+
     <p>
-        最初参与者A有50点筹码，参与者B什么也没有。<br>
-        假设参与者A分配给参与者B 30点筹码。<br>
-        参与者B收到翻了3倍的筹码后，选择返还参与者A 50点筹码。<br>
-        最后，参与者A和参与者B各有几点筹码？<br>
+        最初您有50点筹码，B没有筹码。<br>
+        假设您分给B 30点筹码。<br>
+        B收到翻了3倍（90点）的筹码后，返了您50点筹码。<br>
+        最后，您和B分别有多少筹码？<br>
     </p>
 
-    {% formfield player.question_trustA with label="参与者A获得了" %}
+    {% formfield player.question_trustA with label="我会有" %}
 
-    {% formfield player.question_trustB with label="参与者B获得了" %}
+    {% formfield player.question_trustB with label="B会有" %}
+
+{% else %}
+
     <p>
-        如果您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        最初您没有筹码，A有50点筹码。<br>
+        假设A分给您30点筹码。<br>
+        而您收到翻了3倍（90点）的筹码后，返了A 50点筹码。<br>
+        最后，您和A分别有多少筹码？<br>
+    </p>
+
+    {% formfield player.question_trustA with label="A会有" %}
+
+    {% formfield player.question_trustB with label="我会有" %}
+
+{% endif %}
+
+    <p>
+        请您在输入答案后点击蓝色按钮 <b>“下一页”</b> 。<br>
         <br>
     </p>
     {% next_button %}

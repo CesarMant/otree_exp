@@ -16,7 +16,7 @@ author = 'César Mantilla'
 
 doc = """
 Trust game with information to the truster/trustee
-about other's ethnicity or religion.
+about other's ethnicity or religion. English version.
 """
 
 class Constants(BaseConstants):
@@ -52,6 +52,12 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             paying_round = random.randint(1, Constants.num_rounds)
             self.session.vars['paying_round'] = paying_round  # Store the payment round
+
+            # Randomization of matching type per round (order effects):
+            # When a=0 in round 2 and 3 the matching is with those of the same Ethnicity/Religion
+            # When a=2 in round 2 and 3 the matching is with those of the other Ethnicity/Religion
+            alter_round = random.choice([0, 2])
+            self.session.vars['alter_round'] = alter_round
 
     def get_ethnicity_dai(self):
         return [
@@ -141,4 +147,3 @@ class Player(BasePlayer):
                               choices=[('Yes', 'Yes'),
                                        ('No', 'No')],
                               widget=widgets.RadioSelectHorizontal())
-

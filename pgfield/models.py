@@ -15,11 +15,19 @@ from otree.models import BaseSubsession, BaseGroup, BasePlayer
 author = 'César Mantilla'
 
 doc = """
-This is a public goods game with second-party punishment to be implemented in the field
+This is a public goods game with second-party punishment
+to be implemented in the field. English version.
 """
 
 class Constants(BaseConstants):
     name_in_url = 'pgfield'
+
+    ### Change this parameter according to the session size ###
+    ### Comment / Uncomment the right one ###
+    total_groups = 3 ## Assuming 12 subjects
+    #total_groups = 4 ## Assuming 16 subjects
+    #total_groups = 5 ## Assuming 20 subjects
+
     players_per_group = 4
     num_rounds = 5
     question_pg1_correct = c(17)
@@ -38,10 +46,6 @@ class Constants(BaseConstants):
     ethnicity_dai = 'Dai'
     ethnicity_han = 'Han'
 
-    # Change this parameter according to the session size
-    # total_groups = 3 # Assuming 12 subjects
-    total_groups = 4 # Assuming 16 subjects
-    #total_groups = 5 # In the sessions with 20 subject this must be uncommented
 
 class Subsession(BaseSubsession):
     # This part must be left as comment when the full_game app is running
@@ -49,8 +53,8 @@ class Subsession(BaseSubsession):
     def before_session_starts(self):
         if self.round_number == 1:
             for p in self.get_players():
-                p.participant.vars['ethnic'] = random.choice(['Dai','Han'])
-                p.participant.vars['religion'] = random.choice(['Buddhist','Christian'])
+                p.participant.vars['ethnic'] = random.choice(['Dai', 'Han'])
+                p.participant.vars['religion'] = random.choice(['Buddhist', 'Christian'])
 
     def get_ethnicity_dai(self):
         return [
@@ -114,6 +118,7 @@ class Group(BaseGroup):
         p2.prepayoff = p2.payoff_s1 - self.total_punish_p2 * Constants.punish_tech - Constants.punish_cost * (p2.punish_p1 + p2.punish_p3 + p2.punish_p4)
         p3.prepayoff = p3.payoff_s1 - self.total_punish_p3 * Constants.punish_tech - Constants.punish_cost * (p3.punish_p1 + p3.punish_p2 + p3.punish_p4)
         p4.prepayoff = p4.payoff_s1 - self.total_punish_p4 * Constants.punish_tech - Constants.punish_cost * (p4.punish_p1 + p4.punish_p2 + p4.punish_p3)
+
 
 class Player(BasePlayer):
     contribution = models.CurrencyField(choices=currency_range(0, Constants.endowment, 1),)

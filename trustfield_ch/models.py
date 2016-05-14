@@ -53,6 +53,12 @@ class Subsession(BaseSubsession):
             paying_round = random.randint(1, Constants.num_rounds)
             self.session.vars['paying_round'] = paying_round  # Store the payment round
 
+            # Randomization of matching type per round (order effects):
+            # When a=0 in round 2 and 3 the matching is with those of the same Ethnicity/Religion
+            # When a=2 in round 2 and 3 the matching is with those of the other Ethnicity/Religion
+            alter_round = random.choice([0, 2])
+            self.session.vars['alter_round'] = alter_round
+
     def get_ethnicity_dai(self):
         return [
             p for p in self.get_players() if p.get_ethnicity() == Constants.ethnicity_dai
@@ -105,14 +111,12 @@ class Player(BasePlayer):
     ethnic_in = models.CharField(initial=None,
                                  choices=[Constants.ethnicity_dai,
                                           Constants.ethnicity_han],
-                                 # choices=[u'傣',u'汉'], # choices=['Dai','Han']
                                  widget=widgets.RadioSelect())
     # Input variable to ask the participants' religion
     religion_in = models.CharField(initial=None,
                                    choices=[Constants.religion_buddhist,
                                             Constants.religion_christian,
                                             Constants.religion_none],
-                                   # choices=[u'佛教',u'基督教',u'无宗教信仰'], #choices=['Buddhist','Christian','None (atheist)'],
                                    widget=widgets.RadioSelect())
     # Function defined to get the ethnicity of the other participant in the group in the trust game
     def other_eth(self):
@@ -140,7 +144,6 @@ class Player(BasePlayer):
 
     # Variable to store the agreement to participate
     consent = models.CharField(initial=None,
-                              choices=[('Yes', 'Yes'),
-                                       ('No', 'No')],
-                              verbose_name='I agree to participate: ',
+                              choices=[('Yes', u'同意'),
+                                       ('No', u'不同意')],
                               widget=widgets.RadioSelectHorizontal())

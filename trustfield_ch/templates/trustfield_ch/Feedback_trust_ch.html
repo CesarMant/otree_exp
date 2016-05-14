@@ -2,51 +2,97 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    理解测试的答案解析
+    理解测试的解答
 {% endblock %}
 
 {% block content %}
 
+{% if player.id_in_group == 1 %}
+
     {% if player.question_trustA == Constants.question_trustA_correct %}
     <p class="text-success">
-    关于参与者A，您的回答{{player.question_trustA}}是正确的。
+    关于您的最终收益，您的回答{{player.question_trustA}}是正确的。
     </p>
     {% else %}
     <p class="text-danger">
-    关于参与者A，您的回答{{player.question_trustA}}是错误的。
+    关于您的最终收益，您的回答{{player.question_trustA}}是错误的。
     </p>
     {% endif %}
     {% if player.question_trustB == Constants.question_trustB_correct %}
     <p class="text-success">
-    关于参与者B，您的回答{{player.question_trustB}}是正确的。
+    关于B的最终收益，您的回答{{player.question_trustB}}是正确的。
     </p>
     {% else %}
     <p class="text-danger">
-    关于参与者B，您的回答{{player.question_trustB}}是错误的。
+    关于B的最终收益，您的回答{{player.question_trustB}}是错误的。
+    </p>
+
+    {% endif %}
+
+    <p>
+        最初您有50点筹码，B没有筹码。<br>
+        假设您分给B 30点筹码。<br>
+        B收到翻了3倍（90点）的筹码后，返了您50点筹码。<br>
+        最后，您和B分别有多少筹码？<br>
+    </p>
+
+    <p>
+        <strong>答案：您有70点筹码，B有40点筹码。</strong>
+    </p>
+
+    <p>
+        <strong>解答：</strong> 您给B 30点筹码。这部分筹码变成原来的三倍，所以B收到了30*3=90 点筹码。<br>
+        然后B返了您 50点筹码。因为B返您的筹码不翻倍，所以您收到的筹码刚好是50点。<br>
+        所以最后您有50-30+50=70点筹码，B有90-50=40点筹码。<br>
+    </p>
+
+{% else %}
+
+    {% if player.question_trustA == Constants.question_trustA_correct %}
+    <p class="text-success">
+    关于A的最终收益，您的回答{{player.question_trustA}}是正确的。
+    </p>
+    {% else %}
+    <p class="text-danger">
+    关于A的最终收益，您的回答{{player.question_trustA}}是错误的。
+    </p>
+    {% endif %}
+    {% if player.question_trustB == Constants.question_trustB_correct %}
+    <p class="text-success">
+    关于您的最终收益，您的回答{{player.question_trustB}}是正确的。
+    </p>
+    {% else %}
+    <p class="text-danger">
+    关于您的最终收益，您的回答{{player.question_trustB}}是错误的。
     </p>
     {% endif %}
 
     <p>
-        假设参与者A给了参与者B 30点筹码。<br>
-        收到翻了3倍的筹码后，参与者B给了参与者A 50点筹码。<br>
-        最终，参与者A和参与者B分别收到了多少筹码？<br>
+        最初您没有筹码，A有50点筹码。<br>
+        假设A先分给您30点筹码。<br>
+        而您收到翻了3倍（90点）的筹码后，返了A 50点筹码。<br>
+        最后，您和A分别有多少筹码？<br>
     </p>
 
     <p>
-        <strong>答案：参与者A得到70点筹码，而参与者B得到40点筹码。</strong>
+        <strong>答案：A有70点筹码，您有40点筹码。</strong>
     </p>
 
     <p>
-        <strong>解析：</strong> 参与者A给了参与者B 30点筹码。这部分筹码被翻了3倍，所以参与者B收到了30*3=90 点筹码.<br>
-        然后参与者B给了参与者A 50点筹码，参与者A收到了50点筹码。<br>
-        所以，最终参与者A有50-30+50=70点筹码，参与者B有90-50=40点筹码。<br>
+        <strong>解答：</strong> A先给您 30点筹码。这部分筹码变成原来的三倍，所以您收到了30*3=90 点筹码。<br>
+        然后您返了A 50点筹码。因为您返A的筹码不翻倍，所以A收到的筹码刚好是50点。<br>
+        所以最后A有50-30+50=70点筹码，您有90-50=40点筹码。<br>
     </p>
+
+{% endif %}
+
     <p>
-        请耐心等待，等听到工作人员的指示后，再点击<b>“下一步”</b>按钮。<br>
+        请耐心等待，等听到工作人员的指示后，再点击<b>“下一页”</b>蓝色按钮。<br>
         <br>
     </p>
+
     {% next_button %}
 
-    {% include 'trustfield_ch/Instructions_ch.html' %}
+    {% include 'trustfield/Instructions.html' %}
 
 {% endblock %}

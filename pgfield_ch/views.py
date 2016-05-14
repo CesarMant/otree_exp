@@ -36,7 +36,7 @@ class Question_pg_ch(Page):
         return self.subsession.round_number == 1
 
     form_model = models.Player
-    form_fields = ['question_pg1','question_pg2']
+    form_fields = ['question_pg1', 'question_pg2']
 
 class Feedback_pg_ch(Page):
 
@@ -149,7 +149,8 @@ class Results_ch(Page):
         for p in self.group.get_players(): # Function to compute total expenditure in punishing others
             p.punish_exp = p.punish_p1 + p.punish_p2 + p.punish_p3 + p.punish_p4
         return {
-        'punish_exp': self.player.punish_exp,
+        'punish_cards': self.player.punish_exp, # Amount spent punishing others
+        'punish_exp': c(Constants.punish_cost * self.player.punish_exp), # Amount spent punishing others
         'eff_punish_p1' : Constants.punish_tech * self.group.total_punish_p1, # Values of total punishment for each player
         'eff_punish_p2' : Constants.punish_tech * self.group.total_punish_p2,
         'eff_punish_p3' : Constants.punish_tech * self.group.total_punish_p3,
@@ -180,6 +181,7 @@ class FinalResults_ch(Page):
             'payoff_block2': self.player.payoff_block2
         }
 
+
 page_sequence = [
     WelcomePublicGoods_ch,
     Question_pg_ch,
@@ -196,4 +198,3 @@ page_sequence = [
     FinalResultsWaitPage,
     FinalResults_ch
 ]
-
