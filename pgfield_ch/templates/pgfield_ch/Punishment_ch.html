@@ -1,7 +1,7 @@
 {% extends "global/Base.html" %} {% load staticfiles otree_tags %}
 
 {% block title %}
-    第二阶段：分配反对筹码<br>
+    第二环节：发反对卡<br>
     轮次：{{ subsession.round_number }} / {{ Constants.num_rounds }} <br>
 {% endblock %}
 
@@ -10,29 +10,29 @@
 <table class="table-condensed" style="width:640px; margin-top:20px;">
     <tr>
         <td>
-            您第一环节向公共账户投资了(参与者 {{ player.id_in_group }})：<td align="center">{{ player.contribution }}
+            您第一环节往公共账户里放了({{ player.id_in_group }}号)：<td align="center">{{ player.contribution }}
         <td>
         <td>
         </td>
     </tr>
     <tr>
         <td>
-            其他参与者第一环节分别向公共账户投资了
+            其他人第一环节分别往公共账户里放了
         <td>
         <td align="center">
-            Allocation of <br> Disapproval Card?
+            发不发 <br> 反对卡？
         </td>
     </tr>
     {% block myform %}
     {% endblock %}
-    <tr><td>所有成员对公共项目的总投资额是：<td align="center">{{ group.total_contribution }}</tr>
-    <tr><td>每个成员从公共项目中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
-    <tr><td>在分配反对筹码之前您的收益是：<td align="center"><b>{{ player.payoff_s1 }}</tr>
+    <tr><td>你们组总共往公共账户里放的筹码数量：<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>每个人从公共账户中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>在分配反对卡之前您的收益是：<td align="center">{{ player.payoff_s1 }}</tr>
 </table>
 
     <p>
         <br>
-        如果您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        一旦您做好了决定，请点击 <b>“下一页”</b>蓝色按钮确认。<br>
         <br>
     </p>
 

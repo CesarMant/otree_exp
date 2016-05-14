@@ -1,7 +1,7 @@
 {% extends "global/Base.html" %} {% load staticfiles otree_tags %}
 
 {% block title %}
-    此轮结果<br>
+    本轮结果<br>
     轮次： {{ subsession.round_number }} / {{ Constants.num_rounds }}
 {% endblock %}
 
@@ -9,19 +9,19 @@
 
 <table class="table-condensed" style="width:600px; margin-top:20px;">
     <tr><td>您的初始筹码数量是：<td align="center">{{ Constants.endowment }}</tr>
-    <tr><td>您对公共账户的投资是：<td align="center">{{ player.contribution }}</tr>
+    <tr><td>您分给公共账户的筹码数量是：<td align="center">{{ player.contribution }}</tr>
     <tr><td colspan="2"><hr/></td></tr>
-    <tr><td>您们整个组对公共项目的总投资额是：<td align="center">{{ group.total_contribution }}</tr>
-    <tr><td>每个人从公共项目中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
-    <tr><td>Your payoff before the allocation of Disapproval Cards:<td align="center"><b>{{ player.payoff_s1 }}</tr>
+    <tr><td>您整个组给公共账户的筹码总数是：<td align="center">{{ group.total_contribution }}</tr>
+    <tr><td>每个人从公共账户中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
+    <tr><td>在发反对卡以前您的收益是：<td align="center"><b>{{ player.payoff_s1 }}</b> </tr>
     <tr><td colspan="2"><hr/></td></tr>
-    <tr><td>You received
+    <tr><td>您收到了
         {% if player.id_in_group == 1 %}   {{ group.total_punish_p1 }}
         {% elif player.id_in_group == 2 %} {{ group.total_punish_p2 }}
         {% elif player.id_in_group == 3 %} {{ group.total_punish_p3 }}
         {% elif player.id_in_group == 4 %} {{ group.total_punish_p4 }}
         {% endif %}
-        Punishment Card(s). They reduce your payoff in:
+        张反对卡。您因此减少的筹码数是：
     <td align="center" style="color:#ff0000">
         {% if player.id_in_group == 1 %}   {{ eff_punish_p1 }}
         {% elif player.id_in_group == 2 %} {{ eff_punish_p2 }}
@@ -29,13 +29,13 @@
         {% elif player.id_in_group == 4 %} {{ eff_punish_p4 }}
         {% endif %}
     </tr>
-    <tr><td>You allocated {{ punish_cards}} Punishment Card(s). It cost you:<td align="center" style="color:#ff0000">{{ punish_exp }}</tr>
-    <tr><td>Your payoff after the allocation of Disapproval Cards:<td align="center"><b>{{ player.prepayoff }}</tr>
+    <tr><td>您发了 {{ punish_cards}} 张反对卡。您因此付的成本是：<td align="center" style="color:#ff0000">{{ punish_exp }}</tr>
+    <tr><td>在发反对卡环节结束后您的收益是：<td align="center"><b>{{ player.prepayoff }}</b> </tr>
     <tr><td></tr>
 </table>
 
     <p>
-        如果您想进入问卷部分，请点击蓝色按钮 <b>“下一步”</b> 。<br>
+        请点击 <b>“下一页”</b>蓝色按钮确认继续游戏。<br>
         <br>
     </p>
 

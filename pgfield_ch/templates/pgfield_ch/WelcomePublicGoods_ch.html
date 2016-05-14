@@ -10,56 +10,58 @@
     <p>
     这是本次活动的<b>第二</b>部分。<br>
     <br>
-    在第二部分包含五轮重复实验。<br>
-    在实验开始前，电脑会随机将您与其他{{ n_minus_one}}名参与者组成一个小组。<br>
-    需要注意的是，小组成员在五轮实验中保持不变。<br>
-    每轮实验开始时每个人将得到<b>{{ Constants.endowment }}</b>初始筹码。<br>
-    所有五轮实验的结果都会被计入最终收益。<br>
+    在这个部分，您会与其他{{ n_minus_one}}个人随机组成一个小组，编号1、2、3、4。<br>
+    开始时，你们每个人将得到<b>{{ Constants.endowment }}</b>初始筹码。<br>
     <!--These points are in addition to the {{ Constants.showupfee }} Yuan-->
     <!--that you will get as your promised participation fee.<br>-->
 
     <br>
     <b>第一环节: 公共账户投资</b><br>
     <br>
-    您需要把<b>{{ Constants.endowment }}</b>筹码在公共账户和您的私人账户之间分配。
-    分配多少筹码给公共账户完全取决于您。<br>
+    您需要决定要从您的<b>{{ Constants.endowment }}</b>筹码中拿出多少给公共账户。<br>
+    这完全取决于您。<br>
     剩下的筹码将留在您的私人账户上。<br>
-    您和组内其他参与者分配给公共账户的所有筹码我们都将乘以<b>{{ Constants.effic_factor }}</b>，作为公共账户的投资回报。<br>
-    所有公共账户的投资回报将在{{ Constants.players_per_group }}个人中<b>平分</b>。<br>
+    您和组里其他人给公共账户的所有筹码，我们都将乘以<b>{{ Constants.effic_factor }}</b>后放入公共账户。<br>
+    不论你们分别往公共账户里放了多少筹码，<br>
+    公共账户的所有筹码将在组里{{ Constants.players_per_group }}个人中<b>平分</b>。<br>
+    最终您能从公共账户里拿到的筹码数由您和组里其他三个人的选择决定。<br>
     <br>
-    例如，如果您分配了 {{ endowment_2|floatformat:0 }}点筹码给公共账户，
-    而组内其他 {{ n_minus_one }} 个参与者总共分配了{{ contrib_others_high|floatformat:0 }}点筹码给公共账户，
-    您将从公共账户中得到(21+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
+    例如，让我们假设您给了公共账户 {{ endowment_2|floatformat:0 }}点筹码，
+    而组里其他 {{ n_minus_one }} 个人总共给了公共账户{{ contrib_others_high|floatformat:0 }}点筹码，
+    您将从公共账户中分到 (21+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
     = {{ payoff_ex_high|floatformat:1 }} 点筹码。
-    这些筹码将和您私人账户中的{{ endowment_2|floatformat:0 }}点筹码加总，作为您的总收益。
-    所以您的总收益是{{ payoff_high|floatformat:0 }}点筹码。<br>
+    这些筹码将和您私人账户中的{{ endowment_2|floatformat:0 }}点筹码加总，因此您的总收益是{{ payoff_high|floatformat:0 }}点筹码。<br>
     <br>
-    如果您还是分配了 {{ endowment_2|floatformat:0 }}点筹码给公共账户，
-    而组内其他 {{ n_minus_one }} 个参与者总共分配了{{ contrib_others_low|floatformat:0 }}点筹码给公共账户，
-    您将从公共账户中得到(9+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
+    现在仍然假设您给了公共账户{{ endowment_2|floatformat:0 }}点筹码，
+    但是组里其他 {{ n_minus_one }} 个人总共给了公共账户{{ contrib_others_low|floatformat:0 }}点筹码，
+    您将从公共账户中分到(9+5) x {{ Constants.effic_factor }} / {{ Constants.players_per_group }}
     = {{ payoff_ex_low|floatformat:1 }} 点筹码。
-    这些筹码将和您私人账户中的{{ endowment_2|floatformat:0 }}点筹码加总，作为您的总收益。
-    所以您的总收益是{{ payoff_low|floatformat:0 }}点筹码。<br>
+    这些筹码将和您私人账户中的{{ endowment_2|floatformat:0 }}点筹码加总，所以您的总收益是{{ payoff_low|floatformat:0 }}点筹码。<br>
     <br>
-    <b>第二环节：分配反对筹码</b><br>
+    <b>第二环节：发反对卡</b><br>
     <br>
-    在这一环节， 您将看到组内其他参与者在前一环节中分配了多少筹码给公共账户。
+    在这一环节开始时， 您会看到组里其他人在上一环节分别给公共账户多少筹码。
     <!--At this stage you can also reduce the income of each group member by distributing disapproval points.<br>-->
-    您需要决定给每个组内成员分别分配多少反对筹码。
-    您每分配<b>1</b>点反对筹码给组内一个参与者，您将<b>损失1点</b>筹码，而收到反对筹码的参与者将<b>损失3点</b>筹码。
-    同样的，组内其他人也可以把反对筹码分配给您。<br>
+    您需要决定要不要给组里其他人发<b>一</b>张反对卡。
+    您每发一张反对卡给别人，您的收益将减少<b> {{ Constants.punish_cost }} </b>点筹码。<br>
+    收到反对卡的人的收益将减少<b> {{ Constants.punish_tech }} </b>点筹码。<br>
+    只要他们想，组里其他人也可以发反对卡给您。<br>
     <br>
-    您分配给其他三个人的反对筹码的总和不能超过<b>{{ Constants.endowment }}</b>。<br>
-    如果您不想给某个组内成员分配反对筹码，请输入<b> 0</b>。<br>
+    针对组里每个人，您都需要选择“发”或“不发”一张反对卡给他/她，。<br>
+    您发的反对卡越多，您出的成本就越高。<br>
+    <br>
     <!--Each disapproval point a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>-->
     <br>
-    例如， 如果您决定分别给组内其他三个参与者分配 0、1、1 点反对筹码，<br>
-    而您总共收到了来自组内其他成员的1点反对筹码，<br>
-    您的总收益将减少5点：您支付了2点筹码来投2点反对筹码给其他成员，另外，您因为收到1点反对筹码而损失3点筹码。<br>
+    例如， 假设您总共发了两（2）张反对卡<br>
+    而您被发了一张反对卡，<br>
+    您的总收益将因此减少9点：为了给组里两个人发反对卡，您需要付4点筹码；同时，您因为被发一张反对卡而失去5点筹码。<br>
     <br>
+
     </p>
+
+
     <p>
-        请耐心等待，等听到工作人员的指示后，再点击<b>“下一步”</b>按钮。<br>
+        请耐心等待，等听到工作人员的指示后，再点击<b>“下一页”</b>蓝色按钮。<br>
         <br>
     </p>
     {% next_button %}
