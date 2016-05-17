@@ -2,32 +2,32 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    第一部分：您的选择<br>
+    第一个游戏：您的选择<br>
     轮次： {{ subsession.round_number }} / {{ Constants.num_rounds }}
 {% endblock %}
 
 {% block content %}
 
     <p>
-        您是参与者A，您有{{Constants.endowment}}初始筹码。<br>
+        您是A，您有{{Constants.endowment}}初始筹码。<br>
     </p>
 {% if subsession.round_number == 2 or subsession.round_number == 4  %}
     <p>
-         参与者B说自己的民族是 {{player.other_eth}}族。<br>
+         B的民族是 {{player.other_eth}}族。<br>
     </p>
 {% elif subsession.round_number == 3 or subsession.round_number == 5 %}
     <p>
         {% if player.other_relig != '无宗教信仰'%}
-            参与者B说自己信仰{{player.other_relig}}。<br>
+            B信仰{{player.other_relig}}。<br>
         {% else %}
-            参与者B说自己没有宗教信仰。<br>
+            B没有宗教信仰。<br>
         {% endif %}
     </p>
 {% endif %}
 
-    {% formfield group.sent_amount with label="您决定给参与者B多少筹码？" %}
+    {% formfield group.sent_amount with label="您要给B多少筹码？" %}
     <p>
-        如果您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        如果您做好了决定，请点击蓝色按钮 <b>“下一页”</b>确认 。请注意，一旦确认，不能再改。<br>
         <br>
     </p>
     {% next_button %}

@@ -61,7 +61,7 @@ class Player(BasePlayer):
 
     living_Xsh = models.CharField(initial=None,
                             choices=[('Birth', u'自出生起'),
-                                     ('Other', u'后来移居到西双版纳（请注明具体的年份）'),],
+                                     ('Other', u'后来才搬到西双版纳（请注明具体的年份）'),],
                             verbose_name=u'',
                                             )
 
@@ -81,7 +81,7 @@ class Player(BasePlayer):
                               choices=[('Dai', u'傣'),
                                        ('Han', u'汉'),
                                        ],
-                              verbose_name=u'您的民族是什么？（请选择您最有认同感的民族）',
+                              verbose_name=u'您的民族是什么？',
                                     )
 
     relig_self = models.CharField(initial=None,
@@ -93,7 +93,7 @@ class Player(BasePlayer):
                                        # ('Other', 'Other (please specify)'),
                                        ('Atheist', u'无宗教信仰'),
                                        ],
-                              verbose_name=u'您的宗教信仰是什么？（请选择您最有认同感的宗教信仰）',
+                              verbose_name=u'您有什么宗教信仰？',
                                     )
 
     urban_15 = models.CharField(initial=None,
@@ -116,12 +116,12 @@ class Player(BasePlayer):
                                       )
 
     education = models.CharField(initial=None,
-                              choices=[('None', u'未受正规教育'),
+                              choices=[('None', u'没上过学'),
                                        ('Primary', u'小学'),
                                        ('Secondary', u'初中'),
                                        ('HighSchool', u'高中/中专/职高'),
                                        ('University', u'本科/大专'),
-                                       ('Graduate', u'硕士/博士'),
+                                       ('Graduate', u'研究生/博士'),
                                        ('Professional', u'技校'),
                                        ('Other', u'其他'),
                                        ],
@@ -160,7 +160,7 @@ class Player(BasePlayer):
                                        ('Good', u'好'),
                                        ('Excellent', u'非常好'),
                                        ],
-                              verbose_name=u'您如何评价您的身体健康状况？',
+                              verbose_name=u'您认为您的身体健康状况怎么样？',
                               widget=widgets.RadioSelectHorizontal())
 
     satisfaction = models.PositiveIntegerField(initial=None,
@@ -202,7 +202,7 @@ class Player(BasePlayer):
 
     identification1 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'住在西双版纳并与您属于同一个民族的人',
+                            verbose_name=u'住在西双版纳并与您是同一个民族的人',
                             widget=widgets.RadioSelectHorizontal())
 
     identification2 = models.PositiveIntegerField(initial=None,
@@ -212,32 +212,32 @@ class Player(BasePlayer):
 
     identification3 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'住在西双版纳并与您有同一种宗教信仰的人',
+                            verbose_name=u'住在西双版纳并与您信仰同一种宗教的人',
                             widget=widgets.RadioSelectHorizontal())
 
     identification4 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'不住在西双版纳但与您有同一种宗教信仰的人',
+                            verbose_name=u'不住在西双版纳但与您信仰同一种宗教的人',
                             widget=widgets.RadioSelectHorizontal())
 
     belief_recipr1 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'我避免对别人不礼貌，因为我不想别人对我不礼貌。',
+                            verbose_name=u'我尽量不对别人不礼貌，是因为我不想别人对我不礼貌。',
                             widget=widgets.RadioSelectHorizontal())
 
     belief_recipr2 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'我不对他人言行恶劣，因此来避免其他人对我的恶劣言行。',
+                            verbose_name=u'我不对他人言行恶劣，是因为不想其他人这样对我。',
                             widget=widgets.RadioSelectHorizontal())
 
     positive_recipr1 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'我会竭尽全力帮助那些以前对我好的人',
+                            verbose_name=u'我会尽全力帮助那些以前对我好的人',
                             widget=widgets.RadioSelectHorizontal())
 
     positive_recipr2 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'我已经准备好要付出代价来帮助那些曾经帮助我的人',
+                            verbose_name=u'我已经准备好要牺牲自己的利益来帮助那些曾经帮助我的人',
                             widget=widgets.RadioSelectHorizontal())
 
     positive_recipr3 = models.PositiveIntegerField(initial=None,
@@ -252,7 +252,7 @@ class Player(BasePlayer):
 
     negative_recipr2 = models.PositiveIntegerField(initial=None,
                             choices=range(1, 8),
-                            verbose_name=u'如果有人让我身陷险境，我会尽快报复'
+                            verbose_name=u'如果有人让我陷入危险的境地，我会尽快报复'
                                          u'不计代价',
                             widget=widgets.RadioSelectHorizontal())
 
@@ -265,10 +265,10 @@ class Player(BasePlayer):
     # Includes: Trust questions and questions about religious behavior
 
     trust1 = models.CharField(initial=None,
-                              choices=[('Trusted', u'大多数人值得信任'),
+                              choices=[('Trusted', u'大多数人值得相信'),
                                        ('Careful', u'在与其他人打交道时必须特别小心'),
                                        ],
-                              verbose_name=u'在与他人打交道时，您更同意大多数人值得信任'
+                              verbose_name=u'在与他人打交道时，您更同意大多数人值得相信'
                                            u'还是更同意需要特别小心？',
                               widget=widgets.RadioSelectHorizontal())
 
@@ -405,7 +405,7 @@ class Player(BasePlayer):
                                        ('Not important', u'不重要'),
                                        ('Not important+', u'完全不重要'),
                                        ],
-                              verbose_name=u'在一段婚姻中和相同宗教信仰的人结婚对您来说重要？',
+                              verbose_name=u'在寻找结婚对象时，和有相同宗教信仰的人结婚对您来说重要？',
                               widget=widgets.RadioSelectHorizontal())
 
     # Items from the HTML Family

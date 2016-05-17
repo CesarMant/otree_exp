@@ -24,8 +24,8 @@ class Final_Payment_ch(Page):
             'payoff_block2' : self.player.payoff_block2,
             'exchange_rate': 0.4,
             'payoff_yuan': self.player.payoff * 0.4,
-            'show_up': 40,
-            'final_earnings': self.player.payoff * 0.4 + 40,
+            'show_up': 50,
+            'final_earnings': self.player.payoff * 0.4 + 50,
         }
 
 

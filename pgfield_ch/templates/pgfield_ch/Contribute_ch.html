@@ -8,25 +8,25 @@
 {% block content %}
 
 <p>
-    我们现在要对筹码进行公共账户和私人账户的分配和投资。<br>
-    本组其他参与者的民族是:
+    现在您要决定给公共账户多少筹码。<br>
+    本组其他人的民族是:
     {{ player.get_others_in_group.0.get_ethnicity }}族, {{ player.get_others_in_group.1.get_ethnicity }}族 和
     {{ player.get_others_in_group.2.get_ethnicity }}族.
     <br>
-    请做出您的决定。<br>
+    请做决定。<br>
 </p>
 
-    {% formfield player.contribution with label="您想往公共账户中分配多少筹码？" %}
+    {% formfield player.contribution with label="您想放多少筹码到公共账户中？" %}
     <p>
-        如果您做好了决定，请点击蓝色按钮 <b>“下一步”</b> 。请注意，一旦进入下一页，无法返回。<br>
+        填好数字后，请点击蓝色按钮 <b>“下一页”</b> 确认。请注意，一旦确认，不能再改。<br>
         <br>
     </p>
     {% next_button %}
 
     {% if subsession.round_number > 1 %}
-        {% include 'pgfield_only_ch/History_pg_ch.html' %}
+        {% include 'pgfield_ch/History_pg_ch.html' %}
     {% endif %}
 
-    {% include 'pgfield_only_ch/Instructions_ch.html' %}
+    {% include 'pgfield_ch/Instructions_ch.html' %}
 
 {% endblock %}

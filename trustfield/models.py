@@ -32,7 +32,7 @@ class Constants(BaseConstants):
 
     # Game parameters
     endowment = c(50)
-    showupfee = c(40)
+    showupfee = c(50)
     mult_factor = 3  # Efficiency factor in the transfer on the trust game
 
     # Variables to display ethnicity and religion options

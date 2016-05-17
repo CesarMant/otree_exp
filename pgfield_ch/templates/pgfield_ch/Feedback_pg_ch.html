@@ -9,11 +9,11 @@
 
     {% if player.question_pg1 == Constants.question_pg1_correct %}
     <p class="text-success">
-    关于第二环节<b>开始前</b>您有的筹码数量，您的回答{{player.question_pg1}}是正确的。
+    关于第二环节<b>开始前</b>您您的收益，您的回答{{player.question_pg1}}是正确的。
     </p>
     {% else %}
     <p class="text-danger">
-    关于第二环节<b>开始前</b>您有的筹码数量，您的回答{{player.question_pg1}}是错误的。
+    关于第二环节<b>开始前</b>您您的收益，您的回答{{player.question_pg1}}是错误的。
     </p>
     {% endif %}
         {% if player.question_pg2 == Constants.question_pg2_correct %}
@@ -46,8 +46,8 @@
 
     <p>
         <strong>分析解答:</strong><br>
-        所有人总共往公共账户里放了10 + 8 + 5 + 1 = 24 点筹码，所以公共项目共获益 24 x 2 = 48 点筹码。<br>
-        公共项目的收益<b>平均分给</b>四个人，每个人得到48 / 4 = 12 点筹码。 <br>
+        所有人总共往公共账户里放了10 + 8 + 5 + 1 = 24 点筹码，所以公共项目共获益 24 x <b>2</b> = 48 点筹码。<br>
+        公共项目的收益<b>平均分</b>给四个人，每个人得到48 / 4 = 12 点筹码。 <br>
         因此，在<b>第二环节开始前</b>，您有 10 - 5 + 12 = 17 点筹码。<br>
         <br>
         在第二环节，您用了一张反对卡，因此您少了<b>2</b>点筹码。<br>

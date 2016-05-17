@@ -24,7 +24,8 @@ class Constants(BaseConstants):
 
     ### Change this parameter according to the session size ###
     ### Comment / Uncomment the right one ###
-    total_groups = 3 ## Assuming 12 subjects
+    total_groups = 2  ## Assuming  8 subjects
+    #total_groups = 3 ## Assuming 12 subjects
     #total_groups = 4 ## Assuming 16 subjects
     #total_groups = 5 ## Assuming 20 subjects 
 
@@ -34,7 +35,7 @@ class Constants(BaseConstants):
     question_pg2_correct = c(10)
 
     endowment = c(10)
-    showupfee = c(40)
+    showupfee = c(50)
     effic_factor = 2   # Efficiency factor for the public goods game
     punish_tech = 5    # Damage dealt by the Punishment Card: reduction of 5 points to the recipient
     punish_cost = 2    # Cost of allocating a Punishment Card: reduction of 2 points to the sender
@@ -87,10 +88,10 @@ class Group(BaseGroup):
     individual_share = models.CurrencyField()
 
     # Total punishment points allocated to each player are stored as a group level variable
-    total_punish_p1 = models.CurrencyField()
-    total_punish_p2 = models.CurrencyField()
-    total_punish_p3 = models.CurrencyField()
-    total_punish_p4 = models.CurrencyField()
+    total_punish_p1 = models.PositiveIntegerField()
+    total_punish_p2 = models.PositiveIntegerField()
+    total_punish_p3 = models.PositiveIntegerField()
+    total_punish_p4 = models.PositiveIntegerField()
 
     # Function to compute the payoffs after the contribution to the public goods game
     def set_payoffs_s1(self):
@@ -132,20 +133,20 @@ class Player(BasePlayer):
 
     # Allocation of punishment points to each subject
     punish_p1 = models.PositiveIntegerField(min=0, max=1, null=True,
-                                     choices=[(0, 'No'),
-                                              (1, 'Yes')],
+                                     choices=[(0, u'不发'),
+                                              (1, u'发')],
                                      widget=widgets.RadioSelectHorizontal())
     punish_p2 = models.PositiveIntegerField(min=0, max=1, null=True,
-                                     choices=[(0, 'No'),
-                                              (1, 'Yes')],
+                                     choices=[(0, u'不发'),
+                                              (1, u'发')],
                                      widget=widgets.RadioSelectHorizontal())
     punish_p3 = models.PositiveIntegerField(min=0, max=1, null=True,
-                                     choices=[(0, 'No'),
-                                              (1, 'Yes')],
+                                     choices=[(0, u'不发'),
+                                              (1, u'发')],
                                      widget=widgets.RadioSelectHorizontal())
     punish_p4 = models.PositiveIntegerField(min=0, max=1, null=True,
-                                     choices=[(0, 'No'),
-                                              (1, 'Yes')],
+                                     choices=[(0, u'不发'),
+                                              (1, u'发')],
                                      widget=widgets.RadioSelectHorizontal())
 
     # Variables to store the responses to the understanding questions

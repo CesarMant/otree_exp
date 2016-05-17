@@ -19,15 +19,15 @@
         <td>
             其他人第一环节分别往公共账户里放了
         <td>
-        <td align="center">
-            发不发 <br> 反对卡？
+        <td align="left">
+            发不发反对卡？
         </td>
     </tr>
     {% block myform %}
     {% endblock %}
     <tr><td>你们组总共往公共账户里放的筹码数量：<td align="center">{{ group.total_contribution }}</tr>
     <tr><td>每个人从公共账户中得到的回报是：<td align="center" style="color:#0000ff">{{ group.individual_share }}</tr>
-    <tr><td>在分配反对卡之前您的收益是：<td align="center">{{ player.payoff_s1 }}</tr>
+    <tr><td>在发反对卡之前您的收益是：<td align="center">{{ player.payoff_s1 }}</tr>
 </table>
 
     <p>

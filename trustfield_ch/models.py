@@ -26,13 +26,14 @@ class Constants(BaseConstants):
 
     ### Change this parameter according to the session size ###
     ### Comment / Uncomment the right one ###
-    num_senders_per_type = 3 ## Assuming 12 subjects
+    num_senders_per_type = 2  ## Assuming 8 subjects
+    #num_senders_per_type = 3 ## Assuming 12 subjects
     #num_senders_per_type = 4 ## Assuming 16 subjects
     #num_senders_per_type = 5 ## Assuming 20 subjects
 
     # Game parameters
     endowment = c(50)
-    showupfee = c(40)
+    showupfee = c(50)
     mult_factor = 3 # Efficiency factor in the transfer on the trust game
 
     # Variables to display ethnicity and religion options

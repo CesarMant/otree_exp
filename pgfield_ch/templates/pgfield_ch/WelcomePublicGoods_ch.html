@@ -2,13 +2,13 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    第二部分
+    第二个游戏
 {% endblock %}
 
 {% block content %}
 
     <p>
-    这是本次活动的<b>第二</b>部分。<br>
+    这是本次活动的<b>第二</b>个游戏。<br>
     <br>
     在这个部分，您会与其他{{ n_minus_one}}个人随机组成一个小组，编号1、2、3、4。<br>
     开始时，你们每个人将得到<b>{{ Constants.endowment }}</b>初始筹码。<br>
@@ -23,7 +23,7 @@
     剩下的筹码将留在您的私人账户上。<br>
     您和组里其他人给公共账户的所有筹码，我们都将乘以<b>{{ Constants.effic_factor }}</b>后放入公共账户。<br>
     不论你们分别往公共账户里放了多少筹码，<br>
-    公共账户的所有筹码将在组里{{ Constants.players_per_group }}个人中<b>平分</b>。<br>
+    公共账户的所有筹码将在组里<b>{{ Constants.players_per_group }}个人中平分</b>。<br>
     最终您能从公共账户里拿到的筹码数由您和组里其他三个人的选择决定。<br>
     <br>
     例如，让我们假设您给了公共账户 {{ endowment_2|floatformat:0 }}点筹码，
@@ -52,7 +52,7 @@
     <br>
     <!--Each disapproval point a group member receives will reduce his income in {{ Constants.punish_tech }} points.<br>-->
     <br>
-    例如， 假设您总共发了两（2）张反对卡<br>
+    例如， 假设您总共发了两张反对卡<br>
     而您被发了一张反对卡，<br>
     您的总收益将因此减少9点：为了给组里两个人发反对卡，您需要付4点筹码；同时，您因为被发一张反对卡而失去5点筹码。<br>
     <br>

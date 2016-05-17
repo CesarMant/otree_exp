@@ -11,15 +11,15 @@
     <table class="table">
         <tr>
             <th>轮次</th>
-            <th>分配给参与者B的筹码数量</th>
-            <th>参与者B返还的筹码数量</th>
-            <th>各轮收益</th>
+            <th>分给B的筹码数量</th>
+            <th>B返还的筹码数量</th>
+            <th>每轮收益</th>
         </tr>
         {% for p in player_in_all_rounds %}
             <tr>
                 <td>{{ p.subsession.round_number }}</td>
-                <td> 您分配了{{ p.group.sent_amount }}筹码。</td>
-                <td> 参与者B返还了{{ p.group.sent_back_amount }}筹码。</td>
+                <td> 您分给B {{ p.group.sent_amount }}筹码。</td>
+                <td> B返给您{{ p.group.sent_back_amount }}筹码。</td>
                 <td> 您的收益是<b>{{ p.prepayoff }}筹码。</b></td>
             </tr>
         {% endfor %}
@@ -28,15 +28,15 @@
     <table class="table">
         <tr>
             <th>轮次</th>
-            <th>参与者A分配的筹码数量</th>
+            <th>A分的筹码数量</th>
             <th>返还的筹码数量</th>
             <th>各轮收益</th>
         </tr>
         {% for p in player_in_all_rounds %}
             <tr>
                 <td>{{ p.subsession.round_number }}</td>
-                <td> 参与者A分配{{ p.group.sent_amount }}筹码。</td>
-                <td> 您返还了{{ p.group.sent_back_amount }}筹码。</td>
+                <td> A分给您{{ p.group.sent_amount }}筹码。</td>
+                <td> 您返了{{ p.group.sent_back_amount }}筹码。</td>
                 <td> 您的收益是<b>{{ p.prepayoff }}筹码。</b></td>
             </tr>
         {% endfor %}
@@ -44,11 +44,11 @@
 {% endif %}
 
 <p>
-    我们随机选择了 <b>第{{ paying_round }}轮</b> 计算您的收益。<br>
-    在第一部分您得到了 <b>{{ player.payoff_block1 }}</b>.<br>
+    我们随机选择了 <b>第{{ paying_round }}轮</b>结果作为您的收益。<br>
+    在第一个游戏中您得到了 <b>{{ player.payoff_block1 }}</b> 筹码.<br>
 </p>
 <p>
-    请耐心等待，等听到工作人员的指示后，再点击<b>“下一步”</b>按钮。<br>
+    请耐心等待，等听到工作人员的指示后，再点击<b>“下一页”</b>按钮。<br>
     <br>
 </p>
     {% next_button %}

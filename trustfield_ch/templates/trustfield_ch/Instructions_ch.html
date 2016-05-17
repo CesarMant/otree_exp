@@ -1,34 +1,35 @@
 {% extends "global/Instructions_ch.html" %}
-{% load staticfiles %}
 
 {% block instructions %}
 
-<img src="{% static "trustfield_ch/instructions_trust_ch.png" %}" width="800"/>
-
 {% if player.id_in_group == 1 %}
 <p>
-    您是参与者A。每轮实验您将与不同的参与者B随机构成配对。
-    您现在拥有<b>{{ Constants.endowment }}</b>的初始筹码，而参与者B<b>没有</b>任何筹码。
-    您需要在0到{{ Constants.endowment }}之间选择任一整数，并把相应筹码分配给参与者B。
-    您分配给参与者B的筹码数量，我们将<b>翻3倍</b>后给参与者B。<br>
+
+    您是A。每轮实验您将与不同的B随机组成一组。<br>
+    每轮开始时您有<b>{{ Constants.endowment }}</b>的筹码，但B<b>没有</b>筹码。<br>
+    您可以把{{ Constants.endowment }}筹码分一些给B。<br>
+    B得到的筹码是您给他/她的筹码数的<b>3</b>倍。<br>
+    您可以选择0到{{ Constants.endowment }}之间的任一整数。<br>
     <br>
-    之后，参与者B将决定返还多少筹码给您。
+    之后，B将决定返多少筹码给您，返还的筹码不会翻倍。<br>
     <br>
-    <b>您的收益=您的初始筹码 - 分配给参与者B的筹码+参与者B给返还给您的筹码。</b><br>
-    <b>参与者B的收益=3*您分配的筹码 - 返还给您的筹码。</b><br>
+    <b>您的收益=您的初始筹码 - 分给B的筹码+B返给您的筹码。</b> <br>
+    <b>B的收益=3*您分给他/她的筹码 - 他/她返给您的筹码。</b> <br>
     <br>
 </p>
+
 {% else %}
 <p>
-    您是参与者B。每轮实验您将与不同的参与者A随机构成配对。
-    您<b>没有</b>初始筹码，而参与者A有<b>{{ Constants.endowment }}</b> 的初始筹码。
-    参与者A需要选择0到{{ Constants.endowment }}之间的任一整数，并把相应筹码分配给您。
-    参与者A给您的筹码数量，我们将<b>翻3倍</b>后给您。<br>
+    您是B。每轮实验您将与不同的A随机组成一组。<br>
+    每轮开始时您<b>没有</b>初始筹码，而A有<b>{{ Constants.endowment }}</b> 的初始筹码。<br>
+    A需要决定是否将他/她的筹码分给您。<br>
+    您得到的筹码是A分给您的筹码数的<b>3</b>倍。<br>
+	A可以选择0到{{ Constants.endowment }}之间的任一整数。<br>
     <br>
-    之后，您需要决定要将您得到的筹码返还多少给参与者A。<br>
+    之后，您需要决定返多少筹码给A，返还的筹码不翻倍。<br>
     <br>
-    <b>您的收益=3*参与者A分配给您的筹码 - 返还的筹码。</b><br>
-    <b>参与者A的收益=参与者A分配后剩余的筹码（初始筹码 - 分配给您的筹码）+您返还给参与者A的筹码。</b><br>
+    <b>您的收益=3*A分给您的筹码 - 您返还的筹码。</b> <br>
+    <b>A的收益=A剩余的筹码（开始的筹码 - 分给您的筹码）+您返给A的筹码。</b> <br>
     <br>
 </p>
 {% endif %}
